@@ -179,41 +179,10 @@ header {visibility: hidden;}
     border-radius: 50%;
 }
 
-.hero-title{
-    font-size: 35px;
-    font-weight: 900;
-    margin-bottom: 8px;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-subtitle{
-    font-size: 15px;
-    font-weight: 600;
-    opacity: .98;
-    position: relative;
-    z-index: 2;
-    line-height: 1.9;
-}
-
-.hero-badge-row{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:16px;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-badge{
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.18);
-    color:#fff;
-    border-radius:999px;
-    padding:8px 14px;
-    font-size:13px;
-    font-weight:800;
-}
+.hero-title{font-size:35px;font-weight:900;margin-bottom:8px;position:relative;z-index:2;}
+.hero-subtitle{font-size:15px;font-weight:600;opacity:.98;position:relative;z-index:2;line-height:1.9;}
+.hero-badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;position:relative;z-index:2;}
+.hero-badge{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.18);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:800;}
 
 .glass-entry {
     background: rgba(255,255,255,.84);
@@ -224,563 +193,150 @@ header {visibility: hidden;}
     box-shadow: 0 20px 72px rgba(15,47,99,.10);
 }
 
-.section-card {
-    background: rgba(255,255,255,.97);
-    border: 1px solid var(--border);
-    border-radius: 26px;
-    padding: 24px;
-    box-shadow: var(--shadow);
-    margin-bottom: 18px;
-}
+.section-card {background:rgba(255,255,255,.97);border:1px solid var(--border);border-radius:26px;padding:24px;box-shadow:var(--shadow);margin-bottom:18px;}
+.section-card-soft {background:linear-gradient(135deg,rgba(255,255,255,.98) 0%,rgba(244,248,255,.98) 100%);border:1px solid var(--border);border-radius:28px;padding:24px;box-shadow:var(--shadow);margin-bottom:18px;}
+.section-title {color:var(--text);font-size:24px;font-weight:900;margin-bottom:6px;}
+.section-subtitle {color:var(--muted);font-size:14px;font-weight:700;margin-bottom:12px;line-height:1.9;}
 
-.section-card-soft {
-    background: linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(244,248,255,.98) 100%);
-    border: 1px solid var(--border);
-    border-radius: 28px;
-    padding: 24px;
-    box-shadow: var(--shadow);
-    margin-bottom: 18px;
-}
+.metric-box {background:linear-gradient(135deg,#ffffff 0%,#f7fbff 100%);border:1px solid var(--border);border-radius:24px;padding:20px 18px;box-shadow:var(--shadow-soft);margin-bottom:10px;}
+.metric-title{color:var(--muted);font-size:13px;font-weight:800;margin-bottom:8px;}
+.metric-value{color:var(--text);font-size:28px;font-weight:900;line-height:1.2;}
+.metric-note{color:var(--primary-2);font-size:12px;font-weight:800;margin-top:6px;}
 
-.section-title {
-    color: var(--text);
-    font-size: 24px;
-    font-weight: 900;
-    margin-bottom: 6px;
-}
+.info-strip {background:linear-gradient(135deg,#ffffff 0%,#f3f8ff 100%);border:1px solid var(--border);border-radius:20px;padding:16px 18px;margin-bottom:18px;box-shadow:0 8px 24px rgba(16,24,40,.04);}
+.info-chip-row{display:flex;gap:10px;flex-wrap:wrap;}
+.info-chip{background:#ecf4ff;color:var(--primary);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:900;border:1px solid #dbe8ff;}
 
-.section-subtitle {
-    color: var(--muted);
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    line-height: 1.9;
-}
+.exam-head {background:linear-gradient(135deg,rgba(15,47,99,0.98) 0%,rgba(26,86,176,0.95) 100%);color:white;border-radius:24px;padding:24px;box-shadow:0 16px 48px rgba(15,47,99,.18);margin-bottom:16px;}
+.exam-title{font-size:28px;font-weight:900;margin-bottom:8px;}
+.exam-chip-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+.exam-chip{background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 12px;font-size:13px;font-weight:900;}
 
-.metric-box {
-    background: linear-gradient(135deg, #ffffff 0%, #f7fbff 100%);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 20px 18px;
-    box-shadow: var(--shadow-soft);
-    margin-bottom: 10px;
-}
+.question-card {background:rgba(255,255,255,.99);border-radius:22px;border:1px solid var(--border);padding:22px;box-shadow:var(--shadow-soft);margin-bottom:16px;}
+.question-index {display:inline-block;background:#edf4ff;color:var(--primary);border:1px solid #dbe8ff;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:900;margin-bottom:10px;}
+.question-title {color:var(--text);font-size:20px;font-weight:900;margin-bottom:8px;line-height:1.9;}
+.question-meta {color:var(--muted);font-size:13px;font-weight:700;margin-bottom:12px;}
 
-.metric-title{
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 800;
-    margin-bottom: 8px;
-}
+.library-book{background:linear-gradient(135deg,#ffffff 0%,#f7fbff 100%);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 8px 22px rgba(16,24,40,.04);margin-bottom:12px;}
+.admin-danger{background:#fff6f6;border:1px solid #ffd8d8;border-radius:24px;padding:22px;}
+.admin-note{color:var(--muted);font-size:13px;font-weight:700;}
+.small-muted{color:var(--muted);font-size:13px;font-weight:700;}
+.input-note{color:#6a7a92;font-size:12px;font-weight:700;margin-top:-8px;margin-bottom:8px;line-height:1.8;}
+.phone-valid{color:var(--success);font-size:12px;font-weight:800;margin-top:-6px;margin-bottom:8px;}
+.phone-invalid{color:var(--danger);font-size:12px;font-weight:800;margin-top:-6px;margin-bottom:8px;}
+.login-help-text{margin-top:-4px;margin-bottom:14px;color:#6a7a92;font-size:13px;font-weight:800;line-height:1.9;}
 
-.metric-value{
-    color: var(--text);
-    font-size: 28px;
-    font-weight: 900;
-    line-height: 1.2;
-}
+.dev-credit{margin-top:16px;text-align:center;color:var(--muted);font-size:13px;font-weight:700;line-height:1.9;}
+.dev-credit a{color:var(--primary-2) !important;text-decoration:none !important;font-weight:900;}
+.dev-credit a:hover{text-decoration:underline !important;}
 
-.metric-note{
-    color: var(--primary-2);
-    font-size: 12px;
-    font-weight: 800;
-    margin-top: 6px;
-}
+.result-shell{margin-top:18px;margin-bottom:14px;}
+.result-hero{background:linear-gradient(135deg,#0f172a 0%,#163264 45%,#1a56b0 100%);border:1px solid rgba(255,255,255,0.08);border-radius:28px;padding:30px 24px;color:#ffffff;box-shadow:0 18px 45px rgba(15,23,42,0.22);margin-bottom:18px;}
+.result-hero-title{font-size:31px;font-weight:900;margin-bottom:10px;text-align:center;}
+.result-hero-subtitle{font-size:15px;opacity:0.96;text-align:center;line-height:2;}
+.status-badge{display:inline-block;margin-top:14px;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:900;}
+.status-pass{background:rgba(22,163,74,0.16);color:#dcfce7;border:1px solid rgba(220,252,231,0.20);}
+.status-fail{background:rgba(220,38,38,0.18);color:#fee2e2;border:1px solid rgba(254,226,226,0.20);}
 
-.info-strip {
-    background: linear-gradient(135deg, #ffffff 0%, #f3f8ff 100%);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 16px 18px;
-    margin-bottom: 18px;
-    box-shadow: 0 8px 24px rgba(16,24,40,.04);
-}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:18px 0 14px 0;}
+.result-stat-card{background:rgba(255,255,255,.98);border:1px solid var(--border);border-radius:22px;padding:18px 16px;box-shadow:var(--shadow-soft);text-align:center;}
+.result-stat-label{font-size:13px;color:var(--muted);font-weight:800;margin-bottom:8px;}
+.result-stat-value{font-size:28px;color:var(--text);font-weight:900;line-height:1.3;}
+.result-stat-note{margin-top:6px;font-size:12px;color:#8a9ab0;font-weight:700;}
 
-.info-chip-row{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-}
+.summary-panel{background:#ffffff;border:1px solid var(--border);border-radius:24px;padding:22px 20px;box-shadow:var(--shadow-soft);margin-top:12px;margin-bottom:16px;}
+.summary-title{font-size:22px;font-weight:900;color:var(--text);margin-bottom:10px;}
+.summary-text{font-size:15px;line-height:2;color:#334155;font-weight:700;}
 
-.info-chip{
-    background:#ecf4ff;
-    color:var(--primary);
-    padding:8px 14px;
-    border-radius:999px;
-    font-size:13px;
-    font-weight:900;
-    border:1px solid #dbe8ff;
-}
+.mistakes-box{background:#ffffff;border:1px solid #ffe1e1;border-radius:24px;padding:20px;margin-top:16px;box-shadow:var(--shadow-soft);}
+.mistakes-title{font-size:21px;font-weight:900;color:#b91c1c;margin-bottom:14px;}
+.mistake-item{border:1px solid var(--border);border-right:5px solid var(--danger);border-radius:18px;padding:16px;margin-bottom:12px;background:#fcfcfd;}
+.mistake-q{font-weight:900;color:var(--text);margin-bottom:8px;line-height:1.9;}
+.mistake-a{color:#475569;line-height:1.95;margin-bottom:4px;font-size:14px;font-weight:700;}
 
-.exam-head {
-    background: linear-gradient(135deg, rgba(15,47,99,0.98) 0%, rgba(26,86,176,0.95) 100%);
-    color: white;
-    border-radius: 24px;
-    padding: 24px;
-    box-shadow: 0 16px 48px rgba(15,47,99,.18);
-    margin-bottom: 16px;
-}
+.ai-feedback-box{background:linear-gradient(135deg,#ffffff 0%,#f6faff 100%);border:1px solid var(--border);border-radius:24px;padding:22px;box-shadow:var(--shadow-soft);margin-top:18px;}
+.ai-feedback-title{font-size:21px;font-weight:900;color:var(--text);margin-bottom:10px;}
+.ai-feedback-summary{color:#334155;font-size:15px;line-height:2;font-weight:700;margin-bottom:14px;}
+.ai-feedback-item{border:1px solid #dde8f7;border-radius:18px;padding:16px;margin-bottom:12px;background:#ffffff;}
 
-.exam-title{
-    font-size: 28px;
-    font-weight: 900;
-    margin-bottom: 8px;
-}
-
-.exam-chip-row{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:12px;
-}
-
-.exam-chip{
-    background: rgba(255,255,255,.15);
-    color:white;
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:999px;
-    padding:8px 12px;
-    font-size:13px;
-    font-weight:900;
-}
-
-.question-card {
-    background: rgba(255,255,255,.99);
-    border-radius: 22px;
-    border: 1px solid var(--border);
-    padding: 22px;
-    box-shadow: var(--shadow-soft);
-    margin-bottom: 16px;
-}
-
-.question-index {
-    display:inline-block;
-    background: #edf4ff;
-    color: var(--primary);
-    border:1px solid #dbe8ff;
-    padding: 7px 12px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 900;
-    margin-bottom: 10px;
-}
-
-.question-title {
-    color: var(--text);
-    font-size: 20px;
-    font-weight: 900;
-    margin-bottom: 8px;
-    line-height: 1.9;
-}
-
-.question-meta {
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.library-book{
-    background: linear-gradient(135deg, #ffffff 0%, #f7fbff 100%);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 18px;
-    box-shadow: 0 8px 22px rgba(16,24,40,.04);
-    margin-bottom: 12px;
-}
-
-.admin-danger{
-    background: #fff6f6;
-    border:1px solid #ffd8d8;
-    border-radius:24px;
-    padding:22px;
-}
-
-.admin-note{
-    color:var(--muted);
-    font-size:13px;
-    font-weight:700;
-}
-
-.small-muted{
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.input-note{
-    color:#6a7a92;
-    font-size:12px;
-    font-weight:700;
-    margin-top:-8px;
-    margin-bottom:8px;
-    line-height: 1.8;
-}
-
-.phone-valid{
-    color: var(--success);
-    font-size: 12px;
-    font-weight: 800;
-    margin-top: -6px;
-    margin-bottom: 8px;
-}
-
-.phone-invalid{
-    color: var(--danger);
-    font-size: 12px;
-    font-weight: 800;
-    margin-top: -6px;
-    margin-bottom: 8px;
-}
-
-.login-help-text{
-    margin-top: -4px;
-    margin-bottom: 14px;
-    color: #6a7a92;
-    font-size: 13px;
-    font-weight: 800;
-    line-height: 1.9;
-}
-
-.dev-credit{
-    margin-top: 16px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1.9;
-}
-
-.dev-credit a{
-    color: var(--primary-2) !important;
-    text-decoration: none !important;
-    font-weight: 900;
-}
-
-.dev-credit a:hover{
-    text-decoration: underline !important;
-}
-
-.result-shell{
-    margin-top: 18px;
-    margin-bottom: 14px;
-}
-
-.result-hero{
-    background: linear-gradient(135deg, #0f172a 0%, #163264 45%, #1a56b0 100%);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 28px;
-    padding: 30px 24px;
-    color: #ffffff;
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.22);
-    margin-bottom: 18px;
-}
-
-.result-hero-title{
-    font-size: 31px;
-    font-weight: 900;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.result-hero-subtitle{
-    font-size: 15px;
-    opacity: 0.96;
-    text-align: center;
-    line-height: 2;
-}
-
-.status-badge{
-    display:inline-block;
-    margin-top:14px;
-    padding:8px 16px;
-    border-radius:999px;
-    font-size:13px;
-    font-weight:900;
-}
-
-.status-pass{
-    background: rgba(22, 163, 74, 0.16);
-    color: #dcfce7;
-    border: 1px solid rgba(220,252,231,0.20);
-}
-
-.status-fail{
-    background: rgba(220, 38, 38, 0.18);
-    color: #fee2e2;
-    border: 1px solid rgba(254,226,226,0.20);
-}
-
-.result-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap:14px;
-    margin: 18px 0 14px 0;
-}
-
-.result-stat-card{
-    background: rgba(255,255,255,.98);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 18px 16px;
-    box-shadow: var(--shadow-soft);
-    text-align: center;
-}
-
-.result-stat-label{
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 800;
-    margin-bottom: 8px;
-}
-
-.result-stat-value{
-    font-size: 28px;
-    color: var(--text);
-    font-weight: 900;
-    line-height: 1.3;
-}
-
-.result-stat-note{
-    margin-top: 6px;
-    font-size: 12px;
-    color: #8a9ab0;
-    font-weight: 700;
-}
-
-.summary-panel{
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 22px 20px;
-    box-shadow: var(--shadow-soft);
-    margin-top: 12px;
-    margin-bottom: 16px;
-}
-
-.summary-title{
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--text);
-    margin-bottom: 10px;
-}
-
-.summary-text{
-    font-size: 15px;
-    line-height: 2;
-    color: #334155;
-    font-weight: 700;
-}
-
-.mistakes-box{
-    background: #ffffff;
-    border: 1px solid #ffe1e1;
-    border-radius: 24px;
-    padding: 20px;
-    margin-top: 16px;
-    box-shadow: var(--shadow-soft);
-}
-
-.mistakes-title{
-    font-size: 21px;
-    font-weight: 900;
-    color: #b91c1c;
-    margin-bottom: 14px;
-}
-
-.mistake-item{
-    border: 1px solid var(--border);
-    border-right: 5px solid var(--danger);
-    border-radius: 18px;
-    padding: 16px;
-    margin-bottom: 12px;
-    background: #fcfcfd;
-}
-
-.mistake-q{
-    font-weight: 900;
-    color: var(--text);
-    margin-bottom: 8px;
-    line-height: 1.9;
-}
-
-.mistake-a{
-    color: #475569;
-    line-height: 1.95;
-    margin-bottom: 4px;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.ai-feedback-box{
-    background: linear-gradient(135deg, #ffffff 0%, #f6faff 100%);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 22px;
-    box-shadow: var(--shadow-soft);
-    margin-top: 18px;
-}
-
-.ai-feedback-title{
-    font-size: 21px;
-    font-weight: 900;
-    color: var(--text);
-    margin-bottom: 10px;
-}
-
-.ai-feedback-summary{
-    color: #334155;
-    font-size: 15px;
-    line-height: 2;
-    font-weight: 700;
-    margin-bottom: 14px;
-}
-
-.ai-feedback-item{
-    border: 1px solid #dde8f7;
-    border-radius: 18px;
-    padding: 16px;
-    margin-bottom: 12px;
-    background: #ffffff;
-}
-
-hr.pretty {
-    border: none;
-    height: 1px;
-    background: linear-gradient(to left, transparent, #d9e4f7, transparent);
-    margin: 18px 0 14px 0;
-}
+hr.pretty {border:none;height:1px;background:linear-gradient(to left,transparent,#d9e4f7,transparent);margin:18px 0 14px 0;}
 
 div.stButton > button,
 div.stDownloadButton > button,
 div.stFormSubmitButton > button {
-    width: 100%;
-    border: none;
-    border-radius: 14px;
-    padding: 12px 18px;
-    font-weight: 900;
-    font-size: 15px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
-    color: white;
-    box-shadow: 0 10px 24px rgba(26,86,176,.24);
-    transition: all .22s ease;
+    width:100%;border:none;border-radius:14px;padding:12px 18px;font-weight:900;font-size:15px;
+    background:linear-gradient(135deg,var(--primary) 0%,var(--primary-2) 100%);
+    color:white;box-shadow:0 10px 24px rgba(26,86,176,.24);transition:all .22s ease;
+}
+div.stButton > button:hover,div.stDownloadButton > button:hover,div.stFormSubmitButton > button:hover {
+    transform:translateY(-2px);box-shadow:0 14px 30px rgba(26,86,176,.28);
 }
 
-div.stButton > button:hover,
-div.stDownloadButton > button:hover,
-div.stFormSubmitButton > button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(26,86,176,.28);
-}
+.stTabs [data-baseweb="tab-list"] {gap:10px;background:rgba(255,255,255,.74);padding:10px;border-radius:20px;border:1px solid var(--border);box-shadow:0 10px 28px rgba(16,24,40,.04);margin-bottom:18px;}
+.stTabs [data-baseweb="tab"] {background:white;border-radius:14px;padding:10px 16px;font-weight:900;color:var(--text);border:1px solid var(--border);}
+.stTabs [aria-selected="true"] {background:linear-gradient(135deg,var(--primary) 0%,var(--primary-2) 100%) !important;color:white !important;border:none !important;}
+.stProgress > div > div > div > div {background:linear-gradient(135deg,var(--primary-2),var(--secondary));}
 
-.stTabs [data-baseweb="tab-list"] {
-    gap: 10px;
-    background: rgba(255,255,255,.74);
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 28px rgba(16,24,40,.04);
-    margin-bottom: 18px;
-}
+[data-testid="stTextInput"] input,[data-testid="stTextArea"] textarea {border-radius:14px !important;border:1px solid #dbe6f5 !important;background:#fbfdff !important;}
+[data-testid="stNumberInput"] input {border-radius:14px !important;}
+h1,h2,h3,h4,h5 {color:var(--text);font-weight:900 !important;}
 
-.stTabs [data-baseweb="tab"] {
-    background: white;
-    border-radius: 14px;
-    padding: 10px 16px;
-    font-weight: 900;
-    color: var(--text);
-    border: 1px solid var(--border);
-}
-
-.stTabs [aria-selected="true"] {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%) !important;
-    color: white !important;
-    border: none !important;
-}
-
-.stProgress > div > div > div > div {
-    background: linear-gradient(135deg, var(--primary-2), var(--secondary));
-}
-
-[data-testid="stTextInput"] input,
-[data-testid="stTextArea"] textarea {
-    border-radius: 14px !important;
-    border: 1px solid #dbe6f5 !important;
-    background: #fbfdff !important;
-}
-
-[data-testid="stNumberInput"] input {
-    border-radius: 14px !important;
-}
-
-h1,h2,h3,h4,h5 {
-    color: var(--text);
-    font-weight: 900 !important;
-}
-
-
-/* ===== Widget + exam layout hardening ===== */
+/* ===== Widget labels ===== */
 [data-testid="stSelectbox"] label,
 [data-testid="stNumberInput"] label,
 [data-testid="stRadio"] label,
 [data-testid="stTextInput"] label,
 [data-testid="stTextArea"] label,
-[data-testid="stFileUploader"] label {
-    color: var(--text) !important;
-    font-weight: 900 !important;
-}
+[data-testid="stFileUploader"] label {color:var(--text) !important;font-weight:900 !important;}
 
 [data-baseweb="select"] > div,
 [data-testid="stNumberInput"] input,
 [data-testid="stTextInput"] input,
-[data-testid="stTextArea"] textarea {
-    background: #ffffff !important;
-    color: var(--text) !important;
-    min-height: 48px;
-    line-height: 1.7 !important;
-}
+[data-testid="stTextArea"] textarea {background:#ffffff !important;color:var(--text) !important;min-height:48px;line-height:1.7 !important;}
+[data-baseweb="select"] * {color:var(--text) !important;}
 
-[data-baseweb="select"] * {
-    color: var(--text) !important;
-}
-
-/* ===== FIX 1: Radio RTL — السؤال والإجابة في نفس الاتجاه ===== */
-[data-testid="stRadio"] {
-    direction: rtl !important;
-}
-
-[data-testid="stRadio"] > div {
-    width: 100%;
-}
-
+/* ===== Radio RTL layout ===== */
+[data-testid="stRadio"] {direction:rtl !important;}
+[data-testid="stRadio"] > div {width:100%;}
 [data-testid="stRadio"] [role="radiogroup"] {
-    direction: rtl !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 10px;
-    width: 100%;
+    direction:rtl !important;display:flex !important;flex-direction:column !important;
+    align-items:stretch !important;gap:10px;width:100%;
+}
+[data-testid="stRadio"] [role="radio"] {
+    background:#ffffff !important;
+    border:1px solid #dbe6f5 !important;
+    border-radius:16px !important;
+    padding:12px 16px 12px 12px !important;
+    min-height:54px;
+    width:100% !important;
+    box-sizing:border-box !important;
+    display:flex !important;
+    flex-direction:row-reverse !important;
+    align-items:flex-start !important;
+    justify-content:flex-start !important;
+    gap:10px;
+}
+[data-testid="stRadio"] [role="radio"][aria-checked="true"] {
+    background:#edf4ff !important;
+    border-color:#9ec5ff !important;
 }
 
-[data-testid="stRadio"] [role="radio"] {
-    background: #ffffff !important;
-    border: 1px solid #dbe6f5 !important;
-    border-radius: 16px !important;
-    padding: 12px 16px 12px 12px !important;
-    min-height: 54px;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    flex-direction: row-reverse !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    gap: 10px;
+/* ===== FIX: تثبيت لون نص الإجابات — أقصى قوة ممكنة ===== */
+[data-testid="stRadio"] [role="radio"],
+[data-testid="stRadio"] [role="radio"] *,
+[data-testid="stRadio"] [role="radio"] * *,
+[data-testid="stRadio"] [role="radio"] * * * {
+    color: #11233b !important;
+    -webkit-text-fill-color: #11233b !important;
+    caret-color: #11233b !important;
+    opacity: 1 !important;
 }
 
 [data-testid="stRadio"] [role="radio"] > div,
 [data-testid="stRadio"] [role="radio"] label,
 [data-testid="stRadio"] [role="radio"] p,
 [data-testid="stRadio"] [role="radio"] span,
+[data-testid="stRadio"] [role="radio"] div,
 [data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"],
 [data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"] * {
     color: #11233b !important;
@@ -795,133 +351,68 @@ h1,h2,h3,h4,h5 {
     min-width: 0 !important;
 }
 
-[data-testid="stRadio"] [role="radio"] * {
-    color: #11233b !important;
-    -webkit-text-fill-color: #11233b !important;
-    caret-color: #11233b !important;
-}
-
-[data-testid="stRadio"] [role="radio"][aria-checked="true"] {
-    background: #edf4ff !important;
-    border-color: #9ec5ff !important;
-}
-
 .question-card [data-testid="stRadio"] label,
 .question-card [data-testid="stRadio"] p,
-.question-card [data-testid="stRadio"] span {
-    font-size: 15px !important;
-    font-weight: 800 !important;
+.question-card [data-testid="stRadio"] span,
+.question-card [data-testid="stRadio"] div {
+    font-size:15px !important;font-weight:800 !important;
+    color:#11233b !important;
+    -webkit-text-fill-color:#11233b !important;
 }
 
-.question-card, .question-card * {
-    direction: rtl !important;
-    text-align: right !important;
-}
+.question-card,.question-card * {direction:rtl !important;text-align:right !important;}
+.library-book,.library-book * {direction:rtl !important;text-align:right !important;}
 
-.library-book, .library-book * {
-    direction: rtl !important;
-    text-align: right !important;
-}
-
-/* ===== FIX 2: Mobile — نص أبيض + overflow ===== */
+/* ===== Mobile fixes ===== */
 @media (max-width: 900px) {
-    .block-container {
-        padding-top: .6rem;
-        padding-left: .7rem;
-        padding-right: .7rem;
+    .block-container {padding-top:.6rem;padding-left:.7rem;padding-right:.7rem;}
+
+    .main-hero,.glass-entry,.section-card,.section-card-soft,
+    .question-card,.result-hero,.summary-panel,.mistakes-box,.ai-feedback-box {
+        padding:18px 16px !important;border-radius:20px !important;
     }
 
-    .main-hero,
-    .glass-entry,
-    .section-card,
-    .section-card-soft,
-    .question-card,
-    .result-hero,
-    .summary-panel,
-    .mistakes-box,
-    .ai-feedback-box {
-        padding: 18px 16px !important;
-        border-radius: 20px !important;
-    }
-
-    .hero-title {
-        font-size: 22px !important;
-        line-height: 1.6 !important;
-    }
-
-    .question-title {
-        font-size: 17px !important;
-        overflow-wrap: anywhere !important;
-        word-break: break-word !important;
-    }
-
-    .hero-subtitle,
-    .section-subtitle,
-    .summary-text,
-    .mistake-q,
-    .mistake-a {
-        line-height: 2 !important;
-        overflow-wrap: anywhere !important;
-    }
+    .hero-title {font-size:22px !important;line-height:1.6 !important;}
+    .question-title {font-size:17px !important;overflow-wrap:anywhere !important;word-break:break-word !important;}
+    .hero-subtitle,.section-subtitle,.summary-text,.mistake-q,.mistake-a {line-height:2 !important;overflow-wrap:anywhere !important;}
 
     /* إصلاح النص الأبيض على الموبايل */
-    .question-card *,
-    .section-card *,
-    .section-card-soft *,
-    .glass-entry *,
-    .mistake-item *,
-    .summary-panel *,
-    .result-stat-card *,
-    .ai-feedback-item * {
-        color: #11233b !important;
-        -webkit-text-fill-color: #11233b !important;
+    .question-card *,.section-card *,.section-card-soft *,
+    .glass-entry *,.mistake-item *,.summary-panel *,
+    .result-stat-card *,.ai-feedback-item * {
+        color:#11233b !important;
+        -webkit-text-fill-color:#11233b !important;
     }
 
-    .result-hero,
-    .result-hero * {
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
+    .result-hero,.result-hero * {
+        color:#ffffff !important;
+        -webkit-text-fill-color:#ffffff !important;
     }
 
-    .result-grid {
-        grid-template-columns: 1fr !important;
-    }
+    .result-grid {grid-template-columns:1fr !important;}
 
-    [data-testid="stRadio"] [role="radiogroup"] {
-        gap: 8px;
-    }
-
-    [data-testid="stRadio"] [role="radio"] {
-        padding: 12px !important;
-        min-height: 52px;
-    }
+    /* راديو موبايل — أقصى قوة */
+    [data-testid="stRadio"] [role="radiogroup"] {gap:8px;}
+    [data-testid="stRadio"] [role="radio"] {padding:12px !important;min-height:52px;}
 
     [data-testid="stRadio"] [role="radio"],
     [data-testid="stRadio"] [role="radio"] *,
-    [data-testid="stRadio"] [role="radio"] label,
+    [data-testid="stRadio"] [role="radio"] * *,
+    [data-testid="stRadio"] [role="radio"] * * *,
+    [data-testid="stRadio"] [role="radio"] div,
     [data-testid="stRadio"] [role="radio"] span,
+    [data-testid="stRadio"] [role="radio"] label,
     [data-testid="stRadio"] [role="radio"] p,
     [data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"],
     [data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"] * {
-        color: #11233b !important;
-        -webkit-text-fill-color: #11233b !important;
-        opacity: 1 !important;
+        color:#11233b !important;
+        -webkit-text-fill-color:#11233b !important;
+        opacity:1 !important;
     }
 
-    .info-chip,
-    .hero-badge,
-    .exam-chip {
-        font-size: 12px !important;
-        padding: 6px 10px !important;
-    }
-
-    .info-chip-row,
-    .hero-badge-row,
-    .exam-chip-row {
-        gap: 7px !important;
-    }
+    .info-chip,.hero-badge,.exam-chip {font-size:12px !important;padding:6px 10px !important;}
+    .info-chip-row,.hero-badge-row,.exam-chip-row {gap:7px !important;}
 }
-
 </style>
 """,
     unsafe_allow_html=True,
@@ -947,9 +438,9 @@ defaults = {
     "last_percent": None,
     "last_time": None,
     "last_mistakes": [],
+    "last_all_answers": [],
     "ai_feedback": None,
     "mistake_explanations": {},
-    # FIX: track first login to avoid repeated welcome messages
     "welcome_sent": False,
 }
 for k, v in defaults.items():
@@ -963,25 +454,20 @@ for k, v in defaults.items():
 def safe_text(value):
     return html.escape(str(value)) if value is not None else ""
 
-
 def render_metric_box(title: str, value: str, note: str = ""):
     st.markdown(
-        f"""
-        <div class="metric-box">
+        f"""<div class="metric-box">
             <div class="metric-title">{safe_text(title)}</div>
             <div class="metric-value">{safe_text(value)}</div>
             <div class="metric-note">{safe_text(note)}</div>
-        </div>
-        """,
+        </div>""",
         unsafe_allow_html=True,
     )
-
 
 def format_elapsed(start_time):
     elapsed = max(0, int(time.time() - start_time))
     mins, secs = divmod(elapsed, 60)
     return elapsed, f"{mins} دقيقة و {secs} ثانية"
-
 
 def normalize_subject_label(value):
     value = str(value).strip() if value is not None else ""
@@ -991,13 +477,11 @@ def normalize_subject_label(value):
         return value
     return value
 
-
 def normalize_subject_code(value):
     value = str(value).strip() if value is not None else ""
     if value in SUBJECT_MAP:
         return SUBJECT_MAP[value]
     return value
-
 
 def localize_subject_column(df, col_name="subject"):
     if df is None or df.empty or col_name not in df.columns:
@@ -1005,7 +489,6 @@ def localize_subject_column(df, col_name="subject"):
     new_df = df.copy()
     new_df[col_name] = new_df[col_name].apply(normalize_subject_label)
     return new_df
-
 
 def get_book_field(row, field_name, default=""):
     try:
@@ -1016,9 +499,7 @@ def get_book_field(row, field_name, default=""):
         pass
     return default
 
-
 def get_all_books_df():
-    # FIX: explicit fallback if created_at column missing
     books_df = pd.DataFrame()
     try:
         books_df = fetch_df("SELECT * FROM books ORDER BY created_at DESC, id DESC")
@@ -1027,21 +508,16 @@ def get_all_books_df():
             books_df = fetch_df("SELECT * FROM books ORDER BY id DESC")
         except Exception:
             pass
-
     if books_df is None or books_df.empty:
         return pd.DataFrame()
-
     if "subject" in books_df.columns:
         books_df = localize_subject_column(books_df, "subject")
     return books_df
 
-
 def clear_exam_answers():
-    answer_keys = [k for k in st.session_state.keys() if str(k).startswith("answer_")]
-    flag_keys = [k for k in st.session_state.keys() if str(k).startswith("flag_note_")]
-    for k in answer_keys + flag_keys:
+    keys = [k for k in st.session_state.keys() if str(k).startswith("answer_") or str(k).startswith("flag_note_")]
+    for k in keys:
         del st.session_state[k]
-
 
 def reset_test_state():
     clear_exam_answers()
@@ -1053,7 +529,6 @@ def reset_test_state():
     st.session_state["warnings_count"] = 0
     st.session_state["submitted"] = False
 
-
 def reset_last_result():
     st.session_state["submitted"] = False
     st.session_state["last_score"] = None
@@ -1061,81 +536,48 @@ def reset_last_result():
     st.session_state["last_percent"] = None
     st.session_state["last_time"] = None
     st.session_state["last_mistakes"] = []
+    st.session_state["last_all_answers"] = []
     st.session_state["ai_feedback"] = None
     st.session_state["mistake_explanations"] = {}
 
-
 def get_user_results(name, phone):
-    df = fetch_df(
-        "SELECT * FROM results WHERE user_name=? AND user_phone=? ORDER BY test_date DESC",
-        (name, phone),
-    )
+    df = fetch_df("SELECT * FROM results WHERE user_name=? AND user_phone=? ORDER BY test_date DESC", (name, phone))
     return localize_subject_column(df, "subject")
 
-
 def get_dashboard_summary():
-    user_results = get_user_results(
-        st.session_state["user_name"],
-        st.session_state["user_phone"],
-    )
+    user_results = get_user_results(st.session_state["user_name"], st.session_state["user_phone"])
     total_attempts = len(user_results)
-    avg_percent = round(float(user_results["percent"].mean()), 2) if not user_results.empty else 0
+    avg_percent  = round(float(user_results["percent"].mean()), 2) if not user_results.empty else 0
     last_percent = float(user_results.iloc[0]["percent"]) if not user_results.empty else 0
     return total_attempts, avg_percent, last_percent, user_results
 
-
 def count_answered_questions(df_questions):
-    answered = 0
-    for _, row in df_questions.iterrows():
-        qid = int(row["id"])
-        if st.session_state.get(f"answer_{qid}") not in [None, ""]:
-            answered += 1
-    return answered
-
+    return sum(1 for _, row in df_questions.iterrows() if st.session_state.get(f"answer_{int(row['id'])}") not in [None, ""])
 
 def normalize_phone_live(phone: str) -> str:
     return re.sub(r"[^0-9]", "", str(phone or ""))[:11]
 
-
 def validate_phone_input(phone: str):
     cleaned = normalize_phone_live(normalize_phone(phone))
-    if not cleaned:
-        return False, "يرجى كتابة رقم التليفون."
-    if not cleaned.isdigit():
-        return False, "رقم التليفون يجب أن يحتوي على أرقام فقط."
-    if len(cleaned) != 11:
-        return False, "رقم التليفون يجب أن يكون 11 رقمًا بالضبط."
-    if not cleaned.startswith("01"):
-        return False, "رقم التليفون يجب أن يبدأ بـ 01."
+    if not cleaned:             return False, "يرجى كتابة رقم التليفون."
+    if not cleaned.isdigit():   return False, "رقم التليفون يجب أن يحتوي على أرقام فقط."
+    if len(cleaned) != 11:      return False, "رقم التليفون يجب أن يكون 11 رقمًا بالضبط."
+    if not cleaned.startswith("01"): return False, "رقم التليفون يجب أن يبدأ بـ 01."
     return True, cleaned
 
-
-def build_ai_exam_feedback(subject: str, user_name: str, mistakes: list):
+def build_ai_exam_feedback(subject, user_name, mistakes):
     if generate_exam_feedback is None:
-        return {
-            "summary_ar": "الملخص الذكي غير متاح حالياً.",
-            "mistakes": []
-        }
-
+        return {"summary_ar": "الملخص الذكي غير متاح حالياً.", "mistakes": []}
     try:
-        return generate_exam_feedback(
-            subject=subject,
-            user_name=user_name,
-            mistakes=mistakes,
-        )
+        return generate_exam_feedback(subject=subject, user_name=user_name, mistakes=mistakes)
     except Exception as e:
-        print("Gemini feedback generation failed:", e)
-        return {
-            "summary_ar": "حدث خطأ أثناء إنشاء الملخص الذكي.",
-            "mistakes": []
-        }
-
+        print("Gemini feedback failed:", e)
+        return {"summary_ar": "حدث خطأ أثناء إنشاء الملخص الذكي.", "mistakes": []}
 
 def get_mistake_explanation(subject, question, user_answer, correct_answer, cache_key):
     cached = st.session_state.get("mistake_explanations", {})
     if cache_key in cached:
         return cached[cache_key]
-
     if generate_ai_explanation is None:
         explanation = "الشرح الذكي غير متاح حالياً."
     else:
@@ -1143,138 +585,96 @@ def get_mistake_explanation(subject, question, user_answer, correct_answer, cach
             explanation = generate_ai_explanation(subject, question, user_answer, correct_answer)
         except Exception:
             explanation = "تعذر إنشاء شرح ذكي لهذه الإجابة حالياً."
-
     cached[cache_key] = explanation
     st.session_state["mistake_explanations"] = cached
     return explanation
 
-
 def send_login_whatsapp_message():
-    # FIX: only send welcome message once per session
     if st.session_state.get("welcome_sent"):
         return True, "already_sent"
-
-    user_name = st.session_state.get("user_name", "")
-    user_phone = st.session_state.get("user_phone", "")
-
     try:
-        result = send_welcome_notification(user_name, user_phone)
+        result = send_welcome_notification(st.session_state.get("user_name",""), st.session_state.get("user_phone",""))
         st.session_state["welcome_sent"] = True
-        print("send_welcome_notification result:", result)
         return result
     except Exception as e:
-        print("send_welcome_notification failed:", e)
         return False, str(e)
-
 
 def start_exam(test_df, subject_label, subject_code):
     clear_exam_answers()
     reset_last_result()
-    st.session_state["test_data"] = test_df.copy()
-    st.session_state["test_subject"] = subject_label
+    st.session_state["test_data"]         = test_df.copy()
+    st.session_state["test_subject"]      = subject_label
     st.session_state["test_subject_code"] = subject_code
-    st.session_state["start_time"] = time.time()
-    st.session_state["test_active"] = True
-    st.session_state["warnings_count"] = 0
-    st.session_state["submitted"] = False
-
+    st.session_state["start_time"]        = time.time()
+    st.session_state["test_active"]       = True
+    st.session_state["warnings_count"]    = 0
+    st.session_state["submitted"]         = False
 
 def send_exam_summary_to_admin(score, total, percent, time_str):
-    if send_telegram_alert is None:
-        return
-
-    alert_text = (
-        f"تنبيه جديد من منصة الامتحانات\n"
-        f"الطالب: {st.session_state['user_name']}\n"
-        f"الهاتف: {st.session_state['user_phone']}\n"
-        f"المادة: {st.session_state['test_subject']}\n"
-        f"النتيجة: {score}/{total} ({percent}%)\n"
-        f"الوقت: {time_str}\n"
-        f"التحذيرات: {st.session_state.get('warnings_count', 0)}"
-    )
+    if send_telegram_alert is None: return
     try:
-        send_telegram_alert(alert_text)
-    except Exception:
-        pass
-
+        send_telegram_alert(
+            f"تنبيه جديد من منصة الامتحانات\n"
+            f"الطالب: {st.session_state['user_name']}\nالهاتف: {st.session_state['user_phone']}\n"
+            f"المادة: {st.session_state['test_subject']}\nالنتيجة: {score}/{total} ({percent}%)\n"
+            f"الوقت: {time_str}\nالتحذيرات: {st.session_state.get('warnings_count',0)}"
+        )
+    except Exception: pass
 
 def send_student_exam_notifications(score, total, percent, time_str, mistakes, failure_due_to_warnings=False):
     try:
-        result = send_exam_notifications(
-            user_name=st.session_state["user_name"],
-            user_phone=st.session_state["user_phone"],
-            subject=st.session_state["test_subject"],
-            score=score,
-            total=total,
-            percent=percent,
-            time_str=time_str,
-            warnings_count=st.session_state.get("warnings_count", 0),
-            mistakes=mistakes,
-            failure_due_to_warnings=failure_due_to_warnings,
+        return send_exam_notifications(
+            user_name=st.session_state["user_name"], user_phone=st.session_state["user_phone"],
+            subject=st.session_state["test_subject"], score=score, total=total, percent=percent,
+            time_str=time_str, warnings_count=st.session_state.get("warnings_count",0),
+            mistakes=mistakes, failure_due_to_warnings=failure_due_to_warnings,
         )
-        print("send_exam_notifications result:", result)
-        return result
     except Exception as e:
-        print("send_exam_notifications failed:", e)
         return False, str(e)
 
-
 def submit_exam(df_questions):
-    # FIX: guard against double submission
-    if st.session_state.get("submitted"):
-        return
-
+    if st.session_state.get("submitted"): return
     if st.session_state.get("start_time") is None:
         st.error("تعذر تسليم الاختبار لأن وقت البدء غير متوفر.")
         return
 
     _, time_str = format_elapsed(st.session_state["start_time"])
     score = 0
-    mistakes = []
+    mistakes    = []
+    all_answers = []
 
     for _, row in df_questions.iterrows():
-        qid = int(row["id"])
-        correct = str(row["correct_answer"]).strip()
+        qid      = int(row["id"])
+        correct  = str(row["correct_answer"]).strip()
         user_ans = st.session_state.get(f"answer_{qid}")
-
-        if user_ans == correct:
+        is_correct = (user_ans == correct)
+        if is_correct:
             score += 1
         else:
-            mistakes.append(
-                {
-                    "id": qid,
-                    "subject": normalize_subject_label(row["subject"]),
-                    "question": row["question"],
-                    "user": user_ans if user_ans else "لم يجب",
-                    "correct": correct,
-                }
-            )
+            mistakes.append({"id": qid, "subject": normalize_subject_label(row["subject"]),
+                             "question": row["question"], "user": user_ans if user_ans else "لم يجب", "correct": correct})
+        all_answers.append({"id": qid, "subject": normalize_subject_label(row["subject"]),
+                            "question": row["question"], "user": user_ans if user_ans else "لم يجب",
+                            "correct": correct, "is_correct": is_correct})
 
-    total = len(df_questions)
+    total   = len(df_questions)
     percent = round((score / total) * 100, 2) if total else 0.0
 
-    save_result(
-        st.session_state["user_name"],
-        st.session_state["user_phone"],
-        st.session_state["test_subject"],
-        score,
-        total,
-        percent,
-        time_str,
-        st.session_state.get("warnings_count", 0),
-    )
+    save_result(st.session_state["user_name"], st.session_state["user_phone"],
+                st.session_state["test_subject"], score, total, percent, time_str,
+                st.session_state.get("warnings_count", 0))
 
     send_exam_summary_to_admin(score, total, percent, time_str)
-    send_student_exam_notifications(score, total, percent, time_str, mistakes, failure_due_to_warnings=False)
+    send_student_exam_notifications(score, total, percent, time_str, mistakes)
 
-    st.session_state["last_score"] = score
-    st.session_state["last_total"] = total
-    st.session_state["last_percent"] = percent
-    st.session_state["last_time"] = time_str
-    st.session_state["last_mistakes"] = mistakes
-    st.session_state["submitted"] = True
-    st.session_state["test_active"] = False
-    # FIX: rerun after submission so page updates immediately
+    st.session_state["last_score"]       = score
+    st.session_state["last_total"]       = total
+    st.session_state["last_percent"]     = percent
+    st.session_state["last_time"]        = time_str
+    st.session_state["last_mistakes"]    = mistakes
+    st.session_state["last_all_answers"] = all_answers
+    st.session_state["submitted"]        = True
+    st.session_state["test_active"]      = False
     st.rerun()
 
 
@@ -1283,107 +683,62 @@ def submit_exam(df_questions):
 # =========================
 if not st.session_state["entered"]:
     c1, c2, c3 = st.columns([1, 1.45, 1])
-
     with c2:
-        st.markdown(
-            """
+        st.markdown("""
             <div class="main-hero">
                 <div class="hero-title">🛡️ منصة امتحانات التحول الرقمي - جامعة جنوب الوادي (المجموعة 205)</div>
-                <div class="hero-subtitle">
-                    منصة حديثة للاختبارات الإلكترونية، المتابعة الدقيقة، وإظهار النتائج بشكل فوري واحترافي.
-                </div>
+                <div class="hero-subtitle">منصة حديثة للاختبارات الإلكترونية، المتابعة الدقيقة، وإظهار النتائج بشكل فوري واحترافي.</div>
                 <div class="hero-badge-row">
                     <div class="hero-badge">واجهة راقية</div>
                     <div class="hero-badge">نتائج فورية</div>
                     <div class="hero-badge">اختبارات متنوعة</div>
                     <div class="hero-badge">مكتبة رقمية</div>
                 </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+            </div>""", unsafe_allow_html=True)
 
         st.markdown('<div class="glass-entry">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">الدخول إلى المنصة</div>', unsafe_allow_html=True)
-        st.markdown(
-            '<div class="section-subtitle">اكتب الاسم ورقم التليفون بشكل صحيح للدخول إلى المنصة ومتابعة الاختبارات والنتائج.</div>',
-            unsafe_allow_html=True,
-        )
-        st.markdown(
-            '<div class="login-help-text">اكتب رقم التليفون من 11 رقمًا بالأرقام فقط مثل: 01012345678</div>',
-            unsafe_allow_html=True,
-        )
+        st.markdown('<div class="section-subtitle">اكتب الاسم ورقم التليفون بشكل صحيح للدخول إلى المنصة ومتابعة الاختبارات والنتائج.</div>', unsafe_allow_html=True)
+        st.markdown('<div class="login-help-text">اكتب رقم التليفون من 11 رقمًا بالأرقام فقط مثل: 01012345678</div>', unsafe_allow_html=True)
 
         with st.form("entry_form", clear_on_submit=False):
-            name = st.text_input("👤 الاسم", placeholder="اكتب الاسم هنا")
-            phone = st.text_input(
-                "📱 رقم التليفون",
-                placeholder="اكتب رقم التليفون هنا",
-                max_chars=11,
-            )
+            name  = st.text_input("👤 الاسم", placeholder="اكتب الاسم هنا")
+            phone = st.text_input("📱 رقم التليفون", placeholder="اكتب رقم التليفون هنا", max_chars=11)
 
             live_phone = normalize_phone_live(phone)
             if phone and live_phone != phone:
-                st.markdown(
-                    '<div class="phone-invalid">يُسمح بكتابة الأرقام فقط، وتم حذف أي رموز أو حروف غير صالحة تلقائيًا.</div>',
-                    unsafe_allow_html=True,
-                )
+                st.markdown('<div class="phone-invalid">يُسمح بكتابة الأرقام فقط.</div>', unsafe_allow_html=True)
             elif phone and len(live_phone) < 11:
-                st.markdown(
-                    '<div class="phone-invalid">رقم التليفون يجب أن يكون 11 رقمًا.</div>',
-                    unsafe_allow_html=True,
-                )
+                st.markdown('<div class="phone-invalid">رقم التليفون يجب أن يكون 11 رقمًا.</div>', unsafe_allow_html=True)
             elif len(live_phone) == 11:
-                st.markdown(
-                    '<div class="phone-valid">✅ رقم التليفون مكتمل وجاهز للدخول.</div>',
-                    unsafe_allow_html=True,
-                )
+                st.markdown('<div class="phone-valid">✅ رقم التليفون مكتمل وجاهز للدخول.</div>', unsafe_allow_html=True)
             else:
-                st.markdown(
-                    '<div class="input-note">سيتم قبول الأرقام فقط، ويجب أن يبدأ الرقم بـ 01 وأن يكون مكونًا من 11 رقمًا.</div>',
-                    unsafe_allow_html=True,
-                )
+                st.markdown('<div class="input-note">سيتم قبول الأرقام فقط، ويجب أن يبدأ الرقم بـ 01 وأن يكون مكونًا من 11 رقمًا.</div>', unsafe_allow_html=True)
 
-            submitted = st.form_submit_button("دخول المنصة")
-
-            if submitted:
+            if st.form_submit_button("دخول المنصة"):
                 clean_name = normalize_name(name)
                 ok_phone, phone_result = validate_phone_input(phone)
-
                 if not clean_name:
                     st.error("يرجى كتابة الاسم.")
                 elif not ok_phone:
                     st.error(phone_result)
                 else:
-                    clean_phone = phone_result
-                    admin_state = is_admin(clean_name, clean_phone)
-
+                    admin_state = is_admin(clean_name, phone_result)
                     reset_test_state()
                     reset_last_result()
-
-                    st.session_state["entered"] = True
-                    st.session_state["user_name"] = clean_name
-                    st.session_state["user_phone"] = clean_phone
-                    st.session_state["is_admin"] = admin_state
+                    st.session_state["entered"]      = True
+                    st.session_state["user_name"]    = clean_name
+                    st.session_state["user_phone"]   = phone_result
+                    st.session_state["is_admin"]     = admin_state
                     st.session_state["welcome_sent"] = False
-
-                    save_user(clean_name, clean_phone, admin_state)
+                    save_user(clean_name, phone_result, admin_state)
                     send_login_whatsapp_message()
                     st.rerun()
 
-        st.markdown(
-            """
-            <div class="dev-credit">
-                تم تطوير المنصة بمعرفة
-                <a href="mailto:ahmeddarhous@gmail.com?subject=استفسار%20بخصوص%20منصة%20الامتحانات">
-                    أحمد درهوس 01030002331
-                </a>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.markdown("""<div class="dev-credit">تم تطوير المنصة بمعرفة
+            <a href="mailto:ahmeddarhous@gmail.com?subject=استفسار%20بخصوص%20منصة%20الامتحانات">أحمد درهوس 01030002331</a>
+        </div>""", unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
-
     st.stop()
 
 
@@ -1391,33 +746,20 @@ if not st.session_state["entered"]:
 # Top Header
 # =========================
 role_text = "مدير النظام" if st.session_state["is_admin"] else "طالب"
-role_emoji = "🛡️" if st.session_state["is_admin"] else "🎓"
-
 top_left, top_right = st.columns([6, 1.3])
-
 with top_left:
-    st.markdown(
-        f"""
+    st.markdown(f"""
         <div class="main-hero">
             <div class="hero-title">🛡️ منصة امتحانات التحول الرقمي - جامعة جنوب الوادي (المجموعة 205)</div>
-            <div class="hero-subtitle">
-                مرحباً <b>{safe_text(st.session_state["user_name"])}</b>
-                — الحالة: <b>{role_text}</b>
-                — رقم التليفون: <b>{safe_text(st.session_state["user_phone"])}</b>
-            </div>
+            <div class="hero-subtitle">مرحباً <b>{safe_text(st.session_state["user_name"])}</b>
+                — الحالة: <b>{role_text}</b> — رقم التليفون: <b>{safe_text(st.session_state["user_phone"])}</b></div>
             <div class="hero-badge-row">
-                <div class="hero-badge">واجهة احترافية</div>
-                <div class="hero-badge">نتائج محفوظة</div>
-                <div class="hero-badge">تقييم لحظي</div>
-                <div class="hero-badge">مراجعة الأخطاء</div>
+                <div class="hero-badge">واجهة احترافية</div><div class="hero-badge">نتائج محفوظة</div>
+                <div class="hero-badge">تقييم لحظي</div><div class="hero-badge">مراجعة الأخطاء</div>
             </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
+        </div>""", unsafe_allow_html=True)
 with top_right:
-    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
     if st.button("تسجيل خروج"):
         for key in list(st.session_state.keys()):
             del st.session_state[key]
@@ -1428,44 +770,25 @@ with top_right:
 # Info Strip
 # =========================
 attempts_count, avg_percent, last_percent, user_results_df = get_dashboard_summary()
-st.markdown(
-    f"""
-    <div class="info-strip">
-        <div class="info-chip-row">
-            <div class="info-chip">👤 المستخدم: {safe_text(st.session_state["user_name"])}</div>
-            <div class="info-chip">📱 الهاتف: {safe_text(st.session_state["user_phone"])}</div>
-            <div class="info-chip">📊 محاولاتك: {attempts_count}</div>
-            <div class="info-chip">📈 متوسطك: {avg_percent}%</div>
-            <div class="info-chip">⭐ آخر نتيجة: {last_percent}%</div>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+st.markdown(f"""
+    <div class="info-strip"><div class="info-chip-row">
+        <div class="info-chip">👤 المستخدم: {safe_text(st.session_state["user_name"])}</div>
+        <div class="info-chip">📱 الهاتف: {safe_text(st.session_state["user_phone"])}</div>
+        <div class="info-chip">📊 محاولاتك: {attempts_count}</div>
+        <div class="info-chip">📈 متوسطك: {avg_percent}%</div>
+        <div class="info-chip">⭐ آخر نتيجة: {last_percent}%</div>
+    </div></div>""", unsafe_allow_html=True)
 
 
 # =========================
 # Tabs
 # =========================
-# FIX: use named tab variables instead of index offsets to avoid silent bugs
 if st.session_state["is_admin"]:
     tab_dashboard, tab_system, tab_subject, tab_mixed, tab_library = st.tabs(
-        [
-            "📊 لوحة الإدارة",
-            "⚙️ إدارة النظام",
-            "📚 اختبار المواد",
-            "🏆 الامتحان المجمع",
-            "📥 المكتبة والتحميل",
-        ]
-    )
+        ["📊 لوحة الإدارة", "⚙️ إدارة النظام", "📚 اختبار المواد", "🏆 الامتحان المجمع", "📥 المكتبة والتحميل"])
 else:
     tab_subject, tab_mixed, tab_library = st.tabs(
-        [
-            "📚 اختبار المواد",
-            "🏆 الامتحان المجمع",
-            "📥 المكتبة والتحميل",
-        ]
-    )
+        ["📚 اختبار المواد", "🏆 الامتحان المجمع", "📥 المكتبة والتحميل"])
 
 
 # =========================
@@ -1475,316 +798,152 @@ if st.session_state["is_admin"]:
     with tab_dashboard:
         st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">لوحة التحكم الرسومية</div>', unsafe_allow_html=True)
-        st.markdown(
-            '<div class="section-subtitle">مؤشرات الأداء، الرسوم البيانية، نتائج الطلاب، وبلاغات مراجعة الأسئلة.</div>',
-            unsafe_allow_html=True,
-        )
+        st.markdown('<div class="section-subtitle">مؤشرات الأداء، الرسوم البيانية، نتائج الطلاب، وبلاغات مراجعة الأسئلة.</div>', unsafe_allow_html=True)
 
         users_count, tests_count, books_count, flags_count = stats_counts()
         m1, m2, m3, m4 = st.columns(4)
-        with m1:
-            render_metric_box("إجمالي الطلاب", str(users_count), "عدد المستخدمين العاديين")
-        with m2:
-            render_metric_box("إجمالي الاختبارات", str(tests_count), "كل المحاولات المسجلة")
-        with m3:
-            render_metric_box("الكتب المرفوعة", str(books_count), "ملفات PDF داخل المكتبة")
-        with m4:
-            render_metric_box("بلاغات الأسئلة", str(flags_count), "بحاجة إلى مراجعة")
+        with m1: render_metric_box("إجمالي الطلاب", str(users_count), "عدد المستخدمين العاديين")
+        with m2: render_metric_box("إجمالي الاختبارات", str(tests_count), "كل المحاولات المسجلة")
+        with m3: render_metric_box("الكتب المرفوعة", str(books_count), "ملفات PDF داخل المكتبة")
+        with m4: render_metric_box("بلاغات الأسئلة", str(flags_count), "بحاجة إلى مراجعة")
 
-        results_df = fetch_df("SELECT * FROM results ORDER BY test_date DESC")
-        results_df = localize_subject_column(results_df, "subject")
-        flags_df = fetch_df("SELECT * FROM flagged_questions ORDER BY created_at DESC")
-        flags_df = localize_subject_column(flags_df, "subject")
+        results_df = localize_subject_column(fetch_df("SELECT * FROM results ORDER BY test_date DESC"), "subject")
+        flags_df   = localize_subject_column(fetch_df("SELECT * FROM flagged_questions ORDER BY created_at DESC"), "subject")
 
         st.markdown('<hr class="pretty">', unsafe_allow_html=True)
         st.markdown("### 📈 الرسوم البيانية والتحليلات")
-
         if not results_df.empty:
             c1, c2 = st.columns(2)
-
             with c1:
                 st.markdown("#### متوسط درجات الطلاب حسب المادة")
-                by_subject = results_df.groupby("subject", as_index=False)["percent"].mean()
-                by_subject = by_subject.rename(columns={"percent": "متوسط النسبة"})
-                st.bar_chart(by_subject.set_index("subject"))
-
+                by_sub = results_df.groupby("subject", as_index=False)["percent"].mean().rename(columns={"percent":"متوسط النسبة"})
+                st.bar_chart(by_sub.set_index("subject"))
             with c2:
                 st.markdown("#### عدد المحاولات حسب المادة")
-                attempts = results_df.groupby("subject", as_index=False)["id"].count()
-                attempts = attempts.rename(columns={"id": "عدد المحاولات"})
-                st.bar_chart(attempts.set_index("subject"))
-
+                att = results_df.groupby("subject", as_index=False)["id"].count().rename(columns={"id":"عدد المحاولات"})
+                st.bar_chart(att.set_index("subject"))
             st.markdown("#### أوقات الذروة لدخول الطلاب")
             try:
-                dt_series = pd.to_datetime(results_df["test_date"], errors="coerce")
-                peak_df = dt_series.dropna().dt.hour.value_counts().sort_index().reset_index()
+                peak_df = pd.to_datetime(results_df["test_date"], errors="coerce").dropna().dt.hour.value_counts().sort_index().reset_index()
                 if not peak_df.empty:
-                    peak_df.columns = ["الساعة", "عدد الدخول"]
+                    peak_df.columns = ["الساعة","عدد الدخول"]
                     peak_df["الساعة"] = peak_df["الساعة"].astype(str)
                     st.line_chart(peak_df.set_index("الساعة"))
-            except Exception:
-                st.info("تعذر تحليل أوقات الذروة حالياً.")
+            except Exception: st.info("تعذر تحليل أوقات الذروة حالياً.")
         else:
             st.info("لا توجد نتائج كافية لعرض الرسوم البيانية.")
 
         st.markdown('<hr class="pretty">', unsafe_allow_html=True)
-
         c_res1, c_res2 = st.columns([1.3, 1])
         with c_res1:
             st.markdown("### 📋 سجل النتائج التفصيلي")
             if not results_df.empty:
-                subject_filter = st.selectbox(
-                    "فلترة النتائج حسب المادة",
-                    ["الكل"] + DISPLAY_SUBJECTS,
-                    key="admin_results_filter",
-                )
-                filtered_results = results_df.copy()
-                if subject_filter != "الكل":
-                    filtered_results = filtered_results[filtered_results["subject"] == subject_filter]
-
-                display_df = filtered_results.rename(
-                    columns={
-                        "user_name": "اسم الطالب",
-                        "user_phone": "رقم الهاتف",
-                        "subject": "المادة",
-                        "score": "النتيجة",
-                        "total": "الدرجة النهائية",
-                        "percent": "النسبة",
-                        "time_taken": "الوقت",
-                        "warnings_count": "التحذيرات",
-                        "test_date": "تاريخ الاختبار",
-                    }
-                ).drop(columns=["id"], errors="ignore")
-                st.dataframe(display_df, width="stretch", height=430)
-            else:
-                st.info("لا توجد نتائج مسجلة حتى الآن.")
-
+                sf = st.selectbox("فلترة النتائج حسب المادة", ["الكل"] + DISPLAY_SUBJECTS, key="admin_results_filter")
+                fr = results_df if sf == "الكل" else results_df[results_df["subject"] == sf]
+                st.dataframe(fr.rename(columns={"user_name":"اسم الطالب","user_phone":"رقم الهاتف","subject":"المادة",
+                    "score":"النتيجة","total":"الدرجة النهائية","percent":"النسبة","time_taken":"الوقت",
+                    "warnings_count":"التحذيرات","test_date":"تاريخ الاختبار"}).drop(columns=["id"],errors="ignore"),
+                    width="stretch", height=430)
+            else: st.info("لا توجد نتائج مسجلة حتى الآن.")
         with c_res2:
             st.markdown("### 🚩 بلاغات مراجعة الأسئلة")
-            if not flags_df.empty:
-                st.dataframe(flags_df, width="stretch", height=430)
-            else:
-                st.info("لا توجد بلاغات حالياً.")
+            if not flags_df.empty: st.dataframe(flags_df, width="stretch", height=430)
+            else: st.info("لا توجد بلاغات حالياً.")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with tab_system:
         st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">إدارة النظام</div>', unsafe_allow_html=True)
-        st.markdown(
-            '<div class="section-subtitle">إضافة الأسئلة، حذفها، رفع الكتب، تصدير التقارير، وتنفيذ أوامر الصيانة.</div>',
-            unsafe_allow_html=True,
-        )
+        st.markdown('<div class="section-subtitle">إضافة الأسئلة، حذفها، رفع الكتب، تصدير التقارير، وتنفيذ أوامر الصيانة.</div>', unsafe_allow_html=True)
 
-        admin_tabs = st.tabs(
-            [
-                "➕ إضافة سؤال",
-                "🗑️ إدارة الأسئلة",
-                "📥 رفع الكتب",
-                "📤 تصدير النتائج",
-                "⚠️ منطقة الخطر",
-            ]
-        )
+        admin_tabs = st.tabs(["➕ إضافة سؤال","🗑️ إدارة الأسئلة","📥 رفع الكتب","📤 تصدير النتائج","⚠️ منطقة الخطر"])
 
         with admin_tabs[0]:
             st.markdown('<div class="section-card">', unsafe_allow_html=True)
             st.markdown("### ➕ إضافة سؤال جديد")
-            st.markdown(
-                '<div class="small-muted">أضف أسئلة جديدة مباشرة إلى بنك الأسئلة.</div>',
-                unsafe_allow_html=True,
-            )
-
             with st.form("add_question_form"):
                 col1, col2 = st.columns(2)
-                with col1:
-                    q_subject_label = st.selectbox("المادة", DISPLAY_SUBJECTS)
-                with col2:
-                    q_type = st.selectbox("نوع السؤال", ["اختياري", "صح وخطأ"])
-
+                with col1: q_subject_label = st.selectbox("المادة", DISPLAY_SUBJECTS)
+                with col2: q_type = st.selectbox("نوع السؤال", ["اختياري","صح وخطأ"])
                 q_text = st.text_area("نص السؤال", height=140)
-
                 c1, c2 = st.columns(2)
-                with c1:
-                    opt1 = st.text_input("الخيار الأول")
-                    opt2 = st.text_input("الخيار الثاني")
-                with c2:
-                    opt3 = st.text_input("الخيار الثالث")
-                    opt4 = st.text_input("الخيار الرابع")
-
+                with c1: opt1=st.text_input("الخيار الأول"); opt2=st.text_input("الخيار الثاني")
+                with c2: opt3=st.text_input("الخيار الثالث"); opt4=st.text_input("الخيار الرابع")
                 correct = st.text_input("الإجابة الصحيحة")
-                add_submit = st.form_submit_button("حفظ السؤال")
-
-                if add_submit:
+                if st.form_submit_button("حفظ السؤال"):
                     if not q_text.strip() or not correct.strip():
                         st.error("يرجى كتابة نص السؤال والإجابة الصحيحة.")
                     else:
-                        q_subject_code = SUBJECT_MAP[q_subject_label]
-                        add_question(
-                            q_subject_code,
-                            q_type,
-                            q_text.strip(),
-                            opt1.strip(),
-                            opt2.strip(),
-                            opt3.strip(),
-                            opt4.strip(),
-                            correct.strip(),
-                        )
-                        st.success("تمت إضافة السؤال بنجاح.")
-                        st.rerun()
-
+                        add_question(SUBJECT_MAP[q_subject_label],q_type,q_text.strip(),opt1.strip(),opt2.strip(),opt3.strip(),opt4.strip(),correct.strip())
+                        st.success("تمت إضافة السؤال بنجاح."); st.rerun()
             st.markdown("</div>", unsafe_allow_html=True)
 
         with admin_tabs[1]:
             st.markdown('<div class="section-card">', unsafe_allow_html=True)
             st.markdown("### 🗑️ إدارة بنك الأسئلة")
-            st.markdown(
-                '<div class="small-muted">معاينة الأسئلة الحالية وحذف أي سؤال من القاعدة.</div>',
-                unsafe_allow_html=True,
-            )
-
-            q_df = get_all_questions()
-            q_df = localize_subject_column(q_df, "subject")
-
+            q_df = localize_subject_column(get_all_questions(), "subject")
             if not q_df.empty:
-                filter_subject = st.selectbox(
-                    "فلترة الأسئلة حسب المادة",
-                    ["الكل"] + DISPLAY_SUBJECTS,
-                    key="questions_filter_subject",
-                )
-                filtered_q = q_df.copy()
-                if filter_subject != "الكل":
-                    filtered_q = filtered_q[filtered_q["subject"] == filter_subject]
-
-                filtered_q["label"] = filtered_q["id"].astype(str) + " - " + filtered_q["question"]
-                selected = st.selectbox("اختر السؤال المراد حذفه", filtered_q["label"].tolist())
+                fs = st.selectbox("فلترة الأسئلة حسب المادة", ["الكل"]+DISPLAY_SUBJECTS, key="questions_filter_subject")
+                fq = q_df if fs == "الكل" else q_df[q_df["subject"]==fs]
+                fq = fq.copy(); fq["label"] = fq["id"].astype(str)+" - "+fq["question"]
+                sel = st.selectbox("اختر السؤال المراد حذفه", fq["label"].tolist())
                 if st.button("حذف السؤال نهائياً"):
-                    qid = int(selected.split(" - ")[0])
-                    delete_question(qid)
-                    st.success("تم حذف السؤال بنجاح.")
-                    st.rerun()
-
-                st.dataframe(filtered_q.drop(columns=["label"]), width="stretch", height=360)
-            else:
-                st.info("لا توجد أسئلة داخل القاعدة حالياً.")
+                    delete_question(int(sel.split(" - ")[0])); st.success("تم حذف السؤال بنجاح."); st.rerun()
+                st.dataframe(fq.drop(columns=["label"]), width="stretch", height=360)
+            else: st.info("لا توجد أسئلة داخل القاعدة حالياً.")
             st.markdown("</div>", unsafe_allow_html=True)
 
         with admin_tabs[2]:
             st.markdown('<div class="section-card">', unsafe_allow_html=True)
             st.markdown("### 📥 رفع الكتب وملفات PDF")
-            st.markdown(
-                '<div class="small-muted">يمكنك رفع ملف واحد أو عدة ملفات دفعة واحدة، ثم تحديد اسم كل كتاب والمادة الخاصة به قبل الحفظ.</div>',
-                unsafe_allow_html=True,
-            )
-
-            uploaded_files = st.file_uploader(
-                "ارفع ملف PDF أو أكثر",
-                type=["pdf"],
-                accept_multiple_files=True,
-                key="multi_books_uploader",
-            )
-
+            uploaded_files = st.file_uploader("ارفع ملف PDF أو أكثر", type=["pdf"], accept_multiple_files=True, key="multi_books_uploader")
             if uploaded_files:
-                st.markdown("#### الملفات الجاهزة للحفظ")
                 upload_payload = []
                 for idx, up_file in enumerate(uploaded_files):
-                    default_name = Path(up_file.name).stem
                     st.markdown('<div class="library-book">', unsafe_allow_html=True)
-                    c_file1, c_file2 = st.columns([1.8, 1.2])
-                    with c_file1:
-                        book_name = st.text_input(
-                            f"اسم الكتاب الظاهر للطالب #{idx + 1}",
-                            value=default_name,
-                            key=f"book_name_{idx}",
-                        )
-                    with c_file2:
-                        book_subject_label = st.selectbox(
-                            f"المادة #{idx + 1}",
-                            DISPLAY_SUBJECTS,
-                            key=f"book_subject_{idx}",
-                        )
-
-                    st.markdown(
-                        f"<div class='small-muted'>الملف الأصلي: {safe_text(up_file.name)}</div>",
-                        unsafe_allow_html=True,
-                    )
+                    c1, c2 = st.columns([1.8,1.2])
+                    with c1: bn = st.text_input(f"اسم الكتاب #{idx+1}", value=Path(up_file.name).stem, key=f"book_name_{idx}")
+                    with c2: bs = st.selectbox(f"المادة #{idx+1}", DISPLAY_SUBJECTS, key=f"book_subject_{idx}")
+                    st.markdown(f"<div class='small-muted'>الملف: {safe_text(up_file.name)}</div>", unsafe_allow_html=True)
                     st.markdown("</div>", unsafe_allow_html=True)
-                    upload_payload.append((up_file, book_name.strip(), SUBJECT_MAP[book_subject_label]))
-
+                    upload_payload.append((up_file, bn.strip(), SUBJECT_MAP[bs]))
                 if st.button("حفظ كل الكتب المرفوعة", key="save_all_books_btn"):
-                    missing_names = [str(i + 1) for i, (_, name, _) in enumerate(upload_payload) if not name]
-                    if missing_names:
+                    if any(not n for _,n,_ in upload_payload):
                         st.error("يرجى كتابة اسم ظاهر لكل كتاب قبل الحفظ.")
                     else:
-                        saved_count = 0
                         for up_file, custom_name, subject_code in upload_payload:
-                            safe_name = f"{uuid.uuid4().hex}.pdf"
-                            file_path = Path("books") / safe_name
-                            with open(file_path, "wb") as f:
-                                f.write(up_file.getbuffer())
-                            save_book(subject_code, custom_name, safe_name)
-                            saved_count += 1
-                        st.success(f"تم حفظ {saved_count} كتاب/ملف بنجاح.")
-                        st.rerun()
-            else:
-                st.info("اختر ملف PDF واحد أو أكثر لبدء الرفع.")
-
+                            sn = f"{uuid.uuid4().hex}.pdf"
+                            with open(Path("books")/sn,"wb") as f: f.write(up_file.getbuffer())
+                            save_book(subject_code, custom_name, sn)
+                        st.success(f"تم حفظ {len(upload_payload)} كتاب/ملف بنجاح."); st.rerun()
+            else: st.info("اختر ملف PDF واحد أو أكثر لبدء الرفع.")
             st.markdown("</div>", unsafe_allow_html=True)
 
         with admin_tabs[3]:
             st.markdown('<div class="section-card">', unsafe_allow_html=True)
             st.markdown("### 📤 تصدير النتائج")
-            st.markdown(
-                '<div class="small-muted">أنشئ ملف Excel احترافي بنتائج كل الطلاب أو مادة محددة.</div>',
-                unsafe_allow_html=True,
-            )
-
-            export_subject_label = st.selectbox(
-                "اختر المادة",
-                ["الكل"] + DISPLAY_SUBJECTS,
-                key="export_subject"
-            )
-
+            esl = st.selectbox("اختر المادة", ["الكل"]+DISPLAY_SUBJECTS, key="export_subject")
             if st.button("إنشاء ملف Excel للنتائج"):
-                if export_results_excel is None:
-                    st.error("خدمة تصدير Excel غير متاحة حالياً.")
+                if export_results_excel is None: st.error("خدمة تصدير Excel غير متاحة حالياً.")
                 else:
-                    export_subject_value = "الكل" if export_subject_label == "الكل" else SUBJECT_MAP[export_subject_label]
-                    export_path = export_results_excel(export_subject_value)
-                    st.success(f"تم إنشاء الملف بنجاح: {export_path}")
-                    with open(export_path, "rb") as f:
-                        st.download_button(
-                            "⬇️ تحميل ملف النتائج",
-                            data=f,
-                            file_name=Path(export_path).name,
-                            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                        )
+                    ep = export_results_excel("الكل" if esl=="الكل" else SUBJECT_MAP[esl])
+                    st.success(f"تم إنشاء الملف: {ep}")
+                    with open(ep,"rb") as f:
+                        st.download_button("⬇️ تحميل ملف النتائج", data=f, file_name=Path(ep).name, mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
             st.markdown("</div>", unsafe_allow_html=True)
 
         with admin_tabs[4]:
             st.markdown('<div class="admin-danger">', unsafe_allow_html=True)
             st.markdown("### ⚠️ منطقة الخطر")
-            st.markdown(
-                '<div class="admin-note">هذه الأوامر نهائية ولا يمكن التراجع عنها.</div>',
-                unsafe_allow_html=True,
-            )
-
+            st.markdown('<div class="admin-note">هذه الأوامر نهائية ولا يمكن التراجع عنها.</div>', unsafe_allow_html=True)
             c1, c2, c3 = st.columns(3)
             with c1:
-                if st.button("حذف كل النتائج"):
-                    execute("DELETE FROM results")
-                    st.success("تم حذف جميع النتائج.")
-                    st.rerun()
+                if st.button("حذف كل النتائج"): execute("DELETE FROM results"); st.success("تم حذف جميع النتائج."); st.rerun()
             with c2:
-                if st.button("حذف كل البلاغات"):
-                    execute("DELETE FROM flagged_questions")
-                    st.success("تم حذف جميع البلاغات.")
-                    st.rerun()
+                if st.button("حذف كل البلاغات"): execute("DELETE FROM flagged_questions"); st.success("تم حذف جميع البلاغات."); st.rerun()
             with c3:
-                if st.button("حذف كل المستخدمين عدا الأدمن"):
-                    execute("DELETE FROM users WHERE is_admin=0")
-                    st.success("تم حذف جميع المستخدمين العاديين.")
-                    st.rerun()
+                if st.button("حذف كل المستخدمين عدا الأدمن"): execute("DELETE FROM users WHERE is_admin=0"); st.success("تم الحذف."); st.rerun()
             st.markdown("</div>", unsafe_allow_html=True)
-
         st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -1794,39 +953,22 @@ if st.session_state["is_admin"]:
 with tab_subject:
     st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">اختبار المواد</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="section-subtitle">اختر المادة، نوع الأسئلة، وعدد الأسئلة لبدء اختبار مخصص.</div>',
-        unsafe_allow_html=True,
-    )
-
+    st.markdown('<div class="section-subtitle">اختر المادة، نوع الأسئلة، وعدد الأسئلة لبدء اختبار مخصص.</div>', unsafe_allow_html=True)
     c1, c2, c3 = st.columns(3)
-    with c1:
-        selected_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS)
-    with c2:
-        selected_type = st.selectbox("نوع الأسئلة", ["اختياري", "صح وخطأ", "ميكس"], key="subject_exam_type")
-    with c3:
-        num_questions = st.number_input("عدد الأسئلة", min_value=1, max_value=100, value=10)
-
+    with c1: selected_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS)
+    with c2: selected_type = st.selectbox("نوع الأسئلة", ["اختياري","صح وخطأ","ميكس"], key="subject_exam_type")
+    with c3: num_questions = st.number_input("عدد الأسئلة", min_value=1, max_value=100, value=10)
     if st.button("🚀 بدء الاختبار", key="start_single"):
-        selected_subject_code = SUBJECT_MAP[selected_subject_label]
-        test_df = fetch_questions(selected_subject_code, selected_type, num_questions)
-
-        if test_df.empty:
-            st.error("لا توجد أسئلة كافية لهذه المادة أو النوع.")
-        else:
-            start_exam(test_df, selected_subject_label, selected_subject_code)
-            st.rerun()
-
+        test_df = fetch_questions(SUBJECT_MAP[selected_subject_label], selected_type, num_questions)
+        if test_df.empty: st.error("لا توجد أسئلة كافية لهذه المادة أو النوع.")
+        else: start_exam(test_df, selected_subject_label, SUBJECT_MAP[selected_subject_label]); st.rerun()
     if not user_results_df.empty:
         st.markdown('<hr class="pretty">', unsafe_allow_html=True)
         st.markdown("### 📌 ملخص سريع لأدائك")
         c1, c2, c3 = st.columns(3)
-        with c1:
-            render_metric_box("عدد محاولاتك", str(attempts_count), "كل الاختبارات المسجلة")
-        with c2:
-            render_metric_box("متوسط النسبة", f"{avg_percent}%", "متوسط النتائج")
-        with c3:
-            render_metric_box("آخر نتيجة", f"{last_percent}%", "أحدث اختبار مسجل")
+        with c1: render_metric_box("عدد محاولاتك", str(attempts_count), "كل الاختبارات المسجلة")
+        with c2: render_metric_box("متوسط النسبة", f"{avg_percent}%", "متوسط النتائج")
+        with c3: render_metric_box("آخر نتيجة", f"{last_percent}%", "أحدث اختبار مسجل")
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -1836,29 +978,16 @@ with tab_subject:
 with tab_mixed:
     st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">الامتحان المجمع</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="section-subtitle">اختبار شامل من مختلف المواد لتقييم المستوى العام. عند تحقيق 80% أو أكثر سيتم توليد شهادة اجتياز PDF تلقائياً.</div>',
-        unsafe_allow_html=True,
-    )
-
+    st.markdown('<div class="section-subtitle">اختبار شامل من مختلف المواد. عند تحقيق 80% أو أكثر سيتم توليد شهادة اجتياز PDF تلقائياً.</div>', unsafe_allow_html=True)
     mix_num = st.number_input("عدد أسئلة الامتحان المجمع", min_value=10, max_value=500, value=30)
-
     c1, c2, c3 = st.columns(3)
-    with c1:
-        render_metric_box("نوع الاختبار", "شامل", "يغطي كل المواد")
-    with c2:
-        render_metric_box("النجاح للشهادة", "80%", "لإصدار شهادة PDF")
-    with c3:
-        render_metric_box("عدد الأسئلة", str(mix_num), "يمكنك تغييره قبل البدء")
-
+    with c1: render_metric_box("نوع الاختبار","شامل","يغطي كل المواد")
+    with c2: render_metric_box("النجاح للشهادة","80%","لإصدار شهادة PDF")
+    with c3: render_metric_box("عدد الأسئلة",str(mix_num),"يمكنك تغييره قبل البدء")
     if st.button("🔥 بدء الامتحان المجمع", key="start_mix"):
         test_df = fetch_questions(subject=None, q_type="ميكس", limit=mix_num)
-        if test_df.empty:
-            st.error("لا توجد أسئلة كافية حاليًا.")
-        else:
-            start_exam(test_df, "امتحان شامل", "MIXED")
-            st.rerun()
-
+        if test_df.empty: st.error("لا توجد أسئلة كافية حاليًا.")
+        else: start_exam(test_df,"امتحان شامل","MIXED"); st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -1868,90 +997,45 @@ with tab_mixed:
 with tab_library:
     st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">المكتبة الرقمية والتحميل</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="section-subtitle">تصفح الكتب والمذكرات حسب المادة أو استعرض جميع الكتب المتاحة وحمّلها مباشرة بصيغة PDF.</div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="section-subtitle">تصفح الكتب والمذكرات حسب المادة أو استعرض جميع الكتب المتاحة وحمّلها مباشرة بصيغة PDF.</div>', unsafe_allow_html=True)
 
-    library_tabs = st.tabs(["📚 حسب المادة", "🗂️ جميع الكتب"])
+    lib_tabs = st.tabs(["📚 حسب المادة","🗂️ جميع الكتب"])
 
-    with library_tabs[0]:
-        lib_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS, key="library_subject")
-        lib_subject_code = SUBJECT_MAP[lib_subject_label]
-        books_df = get_books_by_subject(lib_subject_code)
-        books_df = localize_subject_column(books_df, "subject")
+    def _render_book_row(row, idx, key_prefix, subject_label=None):
+        st.markdown('<div class="library-book">', unsafe_allow_html=True)
+        b1, b2 = st.columns([4.5, 1.5])
+        cn  = get_book_field(row,"custom_name","كتاب بدون اسم")
+        cat = get_book_field(row,"created_at","غير متاح")
+        fn  = get_book_field(row,"file_name","")
+        rid = get_book_field(row,"id",idx)
+        sl  = subject_label or normalize_subject_label(get_book_field(row,"subject","غير محددة"))
+        with b1:
+            st.markdown(f"#### {safe_text(cn)}")
+            st.markdown(f"<div class='small-muted'>المادة: {safe_text(sl)} — تمت إضافته: {safe_text(cat)}</div>", unsafe_allow_html=True)
+        with b2:
+            fp = Path("books") / str(fn)
+            if fn and fp.exists():
+                with open(fp,"rb") as pf:
+                    st.download_button("⬇️ تحميل الملف", data=pf, file_name=f"{cn}.pdf", mime="application/pdf", key=f"{key_prefix}_{idx}_{rid}")
+            else: st.caption("الملف غير متوفر")
+        st.markdown("</div>", unsafe_allow_html=True)
 
-        if not books_df.empty:
-            st.markdown(f"### 📚 الكتب المتاحة لمادة: {safe_text(lib_subject_label)}")
-            for idx, row in books_df.iterrows():
-                st.markdown('<div class="library-book">', unsafe_allow_html=True)
-                b1, b2 = st.columns([4.5, 1.5])
-                custom_name = get_book_field(row, "custom_name", "كتاب بدون اسم")
-                created_at = get_book_field(row, "created_at", "غير متاح")
-                file_name = get_book_field(row, "file_name", "")
-                row_id = get_book_field(row, "id", idx)
-                with b1:
-                    st.markdown(f"#### {safe_text(custom_name)}")
-                    st.markdown(
-                        f"<div class='small-muted'>المادة: {safe_text(lib_subject_label)} — تمت إضافته بتاريخ: {safe_text(created_at)}</div>",
-                        unsafe_allow_html=True,
-                    )
-                with b2:
-                    file_path = Path("books") / str(file_name)
-                    if file_name and file_path.exists():
-                        with open(file_path, "rb") as pdf_file:
-                            st.download_button(
-                                label="⬇️ تحميل الملف",
-                                data=pdf_file,
-                                file_name=f"{custom_name}.pdf",
-                                mime="application/pdf",
-                                key=f"dl_subject_{idx}_{row_id}",
-                            )
-                    else:
-                        st.caption("الملف غير متوفر")
-                st.markdown("</div>", unsafe_allow_html=True)
-        else:
-            st.info("لا توجد كتب أو مذكرات مرفوعة لهذه المادة حاليًا.")
+    with lib_tabs[0]:
+        lsl = st.selectbox("اختر المادة", DISPLAY_SUBJECTS, key="library_subject")
+        bdf = localize_subject_column(get_books_by_subject(SUBJECT_MAP[lsl]), "subject")
+        if not bdf.empty:
+            st.markdown(f"### 📚 الكتب المتاحة لمادة: {safe_text(lsl)}")
+            for idx, row in bdf.iterrows(): _render_book_row(row, idx, "dl_subject", lsl)
+        else: st.info("لا توجد كتب أو مذكرات مرفوعة لهذه المادة حاليًا.")
 
-    with library_tabs[1]:
-        all_books_df = get_all_books_df()
-        if not all_books_df.empty:
+    with lib_tabs[1]:
+        abdf = get_all_books_df()
+        if not abdf.empty:
             st.markdown("### 🗂️ جميع الكتب المتاحة")
-            for idx, row in all_books_df.iterrows():
-                st.markdown('<div class="library-book">', unsafe_allow_html=True)
-                b1, b2 = st.columns([4.5, 1.5])
-                custom_name = get_book_field(row, "custom_name", "كتاب بدون اسم")
-                created_at = get_book_field(row, "created_at", "غير متاح")
-                file_name = get_book_field(row, "file_name", "")
-                row_id = get_book_field(row, "id", idx)
-                row_subject = normalize_subject_label(get_book_field(row, "subject", "غير محددة"))
-                with b1:
-                    st.markdown(f"#### {safe_text(custom_name)}")
-                    st.markdown(
-                        f"<div class='small-muted'>المادة: {safe_text(row_subject)} — تمت إضافته بتاريخ: {safe_text(created_at)}</div>",
-                        unsafe_allow_html=True,
-                    )
-                with b2:
-                    file_path = Path("books") / str(file_name)
-                    if file_name and file_path.exists():
-                        with open(file_path, "rb") as pdf_file:
-                            st.download_button(
-                                label="⬇️ تحميل الملف",
-                                data=pdf_file,
-                                file_name=f"{custom_name}.pdf",
-                                mime="application/pdf",
-                                key=f"dl_all_{idx}_{row_id}",
-                            )
-                    else:
-                        st.caption("الملف غير متوفر")
-                st.markdown("</div>", unsafe_allow_html=True)
-        else:
-            st.info("لا توجد كتب مرفوعة داخل المكتبة حالياً.")
+            for idx, row in abdf.iterrows(): _render_book_row(row, idx, "dl_all")
+        else: st.info("لا توجد كتب مرفوعة داخل المكتبة حالياً.")
 
-    st.markdown(
-        '<div class="small-muted" style="margin-top:14px; text-align:center; font-size:14px;">جميع الحقوق محفوظة لمؤلفي الكتب.</div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="small-muted" style="margin-top:14px;text-align:center;font-size:14px;">جميع الحقوق محفوظة لمؤلفي الكتب.</div>', unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -1960,7 +1044,6 @@ with tab_library:
 # =========================
 if st.session_state.get("test_active") and st.session_state.get("test_data") is not None:
     st.markdown("---")
-
     df_questions = st.session_state["test_data"]
 
     if df_questions.empty:
@@ -1968,123 +1051,64 @@ if st.session_state.get("test_active") and st.session_state.get("test_data") is 
         reset_test_state()
     else:
         _, elapsed_label = format_elapsed(st.session_state["start_time"])
-        total_questions = len(df_questions)
-        answered_questions = count_answered_questions(df_questions)
-        progress_value = answered_questions / total_questions if total_questions else 0
+        tq = len(df_questions)
+        aq = count_answered_questions(df_questions)
 
-        st.markdown(
-            f"""
+        st.markdown(f"""
             <div class="exam-head">
                 <div class="exam-title">📘 {safe_text(st.session_state["test_subject"])}</div>
                 <div>أجب عن الأسئلة التالية، ثم قم بتسليم الاختبار في النهاية.</div>
                 <div class="exam-chip-row">
                     <div class="exam-chip">⏱️ الوقت الحالي: {safe_text(elapsed_label)}</div>
-                    <div class="exam-chip">📊 تم الإجابة: {answered_questions} / {total_questions}</div>
-                    <div class="exam-chip">⚠️ التحذيرات: {st.session_state.get("warnings_count", 0)} / 3</div>
+                    <div class="exam-chip">📊 تم الإجابة: {aq} / {tq}</div>
+                    <div class="exam-chip">⚠️ التحذيرات: {st.session_state.get("warnings_count",0)} / 3</div>
                 </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+            </div>""", unsafe_allow_html=True)
 
-        st.progress(progress_value, text=f"نسبة التقدم: {answered_questions} من {total_questions}")
-
-        st.warning(
-            "ملاحظة: النسخة الحالية تحتوي على نظام تحذيرات يدوي كمقدمة لنظام منع الغش. عند الوصول إلى 3 تحذيرات يتم إنهاء الاختبار وتسجيل نتيجة صفرية."
-        )
+        st.progress(aq/tq if tq else 0, text=f"نسبة التقدم: {aq} من {tq}")
+        st.warning("ملاحظة: عند الوصول إلى 3 تحذيرات يتم إنهاء الاختبار وتسجيل نتيجة صفرية.")
 
         warn1, warn2, _ = st.columns([1.4, 1.4, 5])
         with warn1:
             if st.button("تسجيل تحذير", key="manual_warning_btn"):
                 st.session_state["warnings_count"] += 1
                 if st.session_state["warnings_count"] >= 3:
-                    save_result(
-                        st.session_state["user_name"],
-                        st.session_state["user_phone"],
-                        st.session_state["test_subject"],
-                        0,
-                        len(df_questions),
-                        0.0,
-                        "تم إنهاء الاختبار بسبب التحذيرات",
-                        st.session_state["warnings_count"],
-                    )
-
-                    st.session_state["submitted"] = True
-                    st.session_state["test_active"] = False
-                    st.session_state["last_score"] = 0
-                    st.session_state["last_total"] = len(df_questions)
-                    st.session_state["last_percent"] = 0.0
-                    st.session_state["last_time"] = "تم إنهاء الاختبار بسبب التحذيرات"
-                    st.session_state["last_mistakes"] = []
-                    st.session_state["ai_feedback"] = None
-                    st.session_state["mistake_explanations"] = {}
-
-                    if send_telegram_alert is not None:
-                        try:
-                            send_telegram_alert(
-                                f"تم إنهاء اختبار بسبب التحذيرات\n"
-                                f"الطالب: {st.session_state['user_name']}\n"
-                                f"الهاتف: {st.session_state['user_phone']}\n"
-                                f"المادة: {st.session_state['test_subject']}\n"
-                                f"التحذيرات: {st.session_state['warnings_count']}"
-                            )
-                        except Exception:
-                            pass
-
-                    send_student_exam_notifications(
-                        score=0,
-                        total=len(df_questions),
-                        percent=0.0,
-                        time_str="تم إنهاء الاختبار بسبب التحذيرات",
-                        mistakes=[],
-                        failure_due_to_warnings=True,
-                    )
-
-                    st.error("تم إنهاء الاختبار بسبب الوصول إلى 3 تحذيرات.")
-                    st.rerun()
+                    save_result(st.session_state["user_name"],st.session_state["user_phone"],
+                                st.session_state["test_subject"],0,len(df_questions),0.0,
+                                "تم إنهاء الاختبار بسبب التحذيرات",st.session_state["warnings_count"])
+                    st.session_state.update({"submitted":True,"test_active":False,"last_score":0,
+                        "last_total":len(df_questions),"last_percent":0.0,
+                        "last_time":"تم إنهاء الاختبار بسبب التحذيرات",
+                        "last_mistakes":[],"last_all_answers":[],"ai_feedback":None,"mistake_explanations":{}})
+                    if send_telegram_alert:
+                        try: send_telegram_alert(f"تم إنهاء اختبار بسبب التحذيرات\nالطالب: {st.session_state['user_name']}\nالهاتف: {st.session_state['user_phone']}\nالمادة: {st.session_state['test_subject']}")
+                        except Exception: pass
+                    send_student_exam_notifications(0,len(df_questions),0.0,"تم إنهاء الاختبار بسبب التحذيرات",[],failure_due_to_warnings=True)
+                    st.error("تم إنهاء الاختبار بسبب الوصول إلى 3 تحذيرات."); st.rerun()
                 st.rerun()
-
         with warn2:
             if st.button("إلغاء الاختبار", key="cancel_exam_btn"):
-                reset_test_state()
-                st.rerun()
+                reset_test_state(); st.rerun()
 
-        # FIX: use enumerate for reliable sequential numbering
         for i, (_, row) in enumerate(df_questions.iterrows()):
             qid = int(row["id"])
-            row_subject_label = normalize_subject_label(row["subject"])
-
             st.markdown('<div class="question-card">', unsafe_allow_html=True)
-            st.markdown(f'<div class="question-index">سؤال رقم {i + 1}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="question-index">سؤال رقم {i+1}</div>', unsafe_allow_html=True)
             st.markdown(f'<div class="question-title">{safe_text(row["question"])}</div>', unsafe_allow_html=True)
-            st.markdown(
-                f'<div class="question-meta">المادة: {safe_text(row_subject_label)} | النوع: {safe_text(row["q_type"])}</div>',
-                unsafe_allow_html=True,
-            )
+            st.markdown(f'<div class="question-meta">المادة: {safe_text(normalize_subject_label(row["subject"]))} | النوع: {safe_text(row["q_type"])}</div>', unsafe_allow_html=True)
 
             if row["q_type"] == "اختياري":
-                options = [
-                    str(opt).strip()
-                    for opt in [row["opt1"], row["opt2"], row["opt3"], row["opt4"]]
-                    if str(opt).strip()
-                ]
-                st.radio("اختر إجابة", options, key=f"answer_{qid}", index=None)
+                opts = [str(o).strip() for o in [row["opt1"],row["opt2"],row["opt3"],row["opt4"]] if str(o).strip()]
+                st.radio("اختر إجابة", opts, key=f"answer_{qid}", index=None)
             else:
-                st.radio("اختر إجابة", ["صح", "خطأ"], key=f"answer_{qid}", index=None)
+                st.radio("اختر إجابة", ["صح","خطأ"], key=f"answer_{qid}", index=None)
 
             with st.expander("🚩 الإبلاغ عن خطأ في السؤال"):
                 note = st.text_area("اكتب ملاحظتك", key=f"flag_note_{qid}")
                 if st.button("إرسال البلاغ", key=f"flag_btn_{qid}"):
-                    save_flag(
-                        qid,
-                        row["question"],
-                        row_subject_label,
-                        st.session_state["user_name"],
-                        st.session_state["user_phone"],
-                        note.strip(),
-                    )
+                    save_flag(qid,row["question"],normalize_subject_label(row["subject"]),
+                              st.session_state["user_name"],st.session_state["user_phone"],note.strip())
                     st.success("تم إرسال البلاغ بنجاح.")
-
             st.markdown("</div>", unsafe_allow_html=True)
 
         if st.button("✅ تسليم وإنهاء الاختبار", key="submit_exam_btn"):
@@ -2095,200 +1119,112 @@ if st.session_state.get("test_active") and st.session_state.get("test_data") is 
 # Last Result View
 # =========================
 if st.session_state.get("submitted") and st.session_state.get("last_score") is not None:
-    score = st.session_state["last_score"]
-    total = st.session_state["last_total"]
-    percent = st.session_state["last_percent"]
-    time_str = st.session_state["last_time"]
-    mistakes = st.session_state.get("last_mistakes", [])
-    passed = float(percent) >= 50 if isinstance(percent, (int, float)) else False
-    correct_count = score
-    wrong_count = max(0, total - score)
+    score        = st.session_state["last_score"]
+    total        = st.session_state["last_total"]
+    percent      = st.session_state["last_percent"]
+    time_str     = st.session_state["last_time"]
+    mistakes     = st.session_state.get("last_mistakes", [])
+    all_answers  = st.session_state.get("last_all_answers", [])
+    passed       = float(percent) >= 50 if isinstance(percent,(int,float)) else False
     warning_count = st.session_state.get("warnings_count", 0)
 
     if time_str == "تم إنهاء الاختبار بسبب التحذيرات":
-        summary_text = (
-            f"تم إيقاف اختبار {st.session_state.get('test_subject', 'الامتحان')} بسبب الوصول إلى الحد الأقصى من التحذيرات. "
-            "يرجى الالتزام بالتعليمات في المحاولة القادمة."
-        )
+        summary_text = f"تم إيقاف اختبار {st.session_state.get('test_subject','الامتحان')} بسبب الوصول إلى الحد الأقصى من التحذيرات."
     elif passed:
-        summary_text = (
-            f"أداء ممتاز يا {st.session_state.get('user_name', 'الطالب')}. "
-            f"لقد حققت {score} من {total} بنسبة {percent}% "
-            f"وأجبت بشكل صحيح على {correct_count} سؤال خلال {time_str}."
-        )
+        summary_text = f"أداء ممتاز يا {st.session_state.get('user_name','الطالب')}. لقد حققت {score} من {total} بنسبة {percent}% خلال {time_str}."
     else:
-        summary_text = (
-            f"تم الانتهاء من {st.session_state.get('test_subject', 'الامتحان')}. "
-            f"حصلت على {score} من {total} بنسبة {percent}% خلال {time_str}. "
-            "يمكنك مراجعة الأخطاء والشرح المبسط بالأسفل لتحسين مستواك في المحاولة القادمة."
-        )
+        summary_text = f"تم الانتهاء من {st.session_state.get('test_subject','الامتحان')}. حصلت على {score} من {total} بنسبة {percent}% خلال {time_str}."
 
-    status_html = (
-        '<div class="status-badge status-pass">✅ تم اجتياز الامتحان بنجاح</div>'
-        if passed and time_str != "تم إنهاء الاختبار بسبب التحذيرات"
-        else '<div class="status-badge status-fail">❌ لم يتم اجتياز الامتحان</div>'
-    )
+    status_html = ('<div class="status-badge status-pass">✅ تم اجتياز الامتحان بنجاح</div>'
+                   if passed and time_str != "تم إنهاء الاختبار بسبب التحذيرات"
+                   else '<div class="status-badge status-fail">❌ لم يتم اجتياز الامتحان</div>')
 
     st.markdown('<div class="result-shell">', unsafe_allow_html=True)
-    st.markdown(
-        f"""
+    st.markdown(f"""
         <div class="result-hero">
             <div class="result-hero-title">النتيجة النهائية</div>
             <div class="result-hero-subtitle">
-                تهانينا <strong>{safe_text(st.session_state.get("user_name", "الطالب"))}</strong><br>
-                تم الانتهاء من امتحان <strong>{safe_text(st.session_state.get("test_subject", "الامتحان"))}</strong>
-                ويمكنك الآن مراجعة الملخص النهائي بالتفصيل.
-                <br>{status_html}
+                تهانينا <strong>{safe_text(st.session_state.get("user_name","الطالب"))}</strong><br>
+                تم الانتهاء من امتحان <strong>{safe_text(st.session_state.get("test_subject","الامتحان"))}</strong>
+                ويمكنك الآن مراجعة الملخص النهائي بالتفصيل.<br>{status_html}
             </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+        </div>""", unsafe_allow_html=True)
 
-    st.markdown(
-        f"""
+    st.markdown(f"""
         <div class="result-grid">
-            <div class="result-stat-card">
-                <div class="result-stat-label">الدرجة</div>
-                <div class="result-stat-value">{safe_text(f"{score}/{total}")}</div>
-                <div class="result-stat-note">إجمالي الأسئلة</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">النسبة المئوية</div>
-                <div class="result-stat-value">{safe_text(f"{percent}%")}</div>
-                <div class="result-stat-note">مستوى الأداء</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">إجابات صحيحة</div>
-                <div class="result-stat-value">{safe_text(correct_count)}</div>
-                <div class="result-stat-note">عدد الإجابات الصحيحة</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">إجابات خاطئة</div>
-                <div class="result-stat-value">{safe_text(wrong_count)}</div>
-                <div class="result-stat-note">عدد الإجابات الخاطئة</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">الوقت المستغرق</div>
-                <div class="result-stat-value">{safe_text(time_str)}</div>
-                <div class="result-stat-note">مدة أداء الاختبار</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">التحذيرات</div>
-                <div class="result-stat-value">{safe_text(warning_count)}</div>
-                <div class="result-stat-note">عدد التحذيرات المسجلة</div>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+            <div class="result-stat-card"><div class="result-stat-label">الدرجة</div><div class="result-stat-value">{safe_text(f"{score}/{total}")}</div><div class="result-stat-note">إجمالي الأسئلة</div></div>
+            <div class="result-stat-card"><div class="result-stat-label">النسبة المئوية</div><div class="result-stat-value">{safe_text(f"{percent}%")}</div><div class="result-stat-note">مستوى الأداء</div></div>
+            <div class="result-stat-card"><div class="result-stat-label">إجابات صحيحة</div><div class="result-stat-value">{safe_text(score)}</div><div class="result-stat-note">عدد الإجابات الصحيحة</div></div>
+            <div class="result-stat-card"><div class="result-stat-label">إجابات خاطئة</div><div class="result-stat-value">{safe_text(max(0,total-score))}</div><div class="result-stat-note">عدد الإجابات الخاطئة</div></div>
+            <div class="result-stat-card"><div class="result-stat-label">الوقت المستغرق</div><div class="result-stat-value">{safe_text(time_str)}</div><div class="result-stat-note">مدة أداء الاختبار</div></div>
+            <div class="result-stat-card"><div class="result-stat-label">التحذيرات</div><div class="result-stat-value">{safe_text(warning_count)}</div><div class="result-stat-note">عدد التحذيرات المسجلة</div></div>
+        </div>""", unsafe_allow_html=True)
 
-    st.markdown(
-        f"""
+    st.markdown(f"""
         <div class="summary-panel">
             <div class="summary-title">الملخص النهائي</div>
             <div class="summary-text">{safe_text(summary_text)}</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+        </div>""", unsafe_allow_html=True)
 
-    if (
-        st.session_state["test_subject"] == "امتحان شامل"
-        and percent >= 80
-        and time_str != "تم إنهاء الاختبار بسبب التحذيرات"
-    ):
+    if st.session_state["test_subject"]=="امتحان شامل" and percent>=80 and time_str!="تم إنهاء الاختبار بسبب التحذيرات":
         if generate_certificate is not None:
-            cert_path = generate_certificate(st.session_state["user_name"], percent, score, total)
-            st.success("🏅 مبروك! لقد اجتزت الامتحان المجمع ويمكنك تحميل شهادة الاجتياز.")
-            with open(cert_path, "rb") as f:
-                st.download_button(
-                    "⬇️ تحميل الشهادة PDF",
-                    data=f,
-                    file_name=Path(cert_path).name,
-                    mime="application/pdf",
-                    key=f"cert_{int(time.time())}",
-                )
-        else:
-            st.info("خدمة إنشاء الشهادة غير متاحة حالياً.")
+            cp = generate_certificate(st.session_state["user_name"], percent, score, total)
+            st.success("🏅 مبروك! يمكنك تحميل شهادة الاجتياز.")
+            with open(cp,"rb") as f:
+                st.download_button("⬇️ تحميل الشهادة PDF", data=f, file_name=Path(cp).name, mime="application/pdf", key=f"cert_{int(time.time())}")
+        else: st.info("خدمة إنشاء الشهادة غير متاحة حالياً.")
 
-    if mistakes:
+    # مراجعة كل الأسئلة مع الشرح (صح وغلط)
+    if all_answers:
         st.markdown('<div class="mistakes-box">', unsafe_allow_html=True)
-        st.markdown('<div class="mistakes-title">مراجعة الإجابات غير الصحيحة</div>', unsafe_allow_html=True)
-
-        for m in mistakes:
+        st.markdown('<div class="mistakes-title">مراجعة الأسئلة والشرح</div>', unsafe_allow_html=True)
+        for m in all_answers:
             cache_key = f"{m['id']}::{m['user']}::{m['correct']}"
-            ai_exp = get_mistake_explanation(
-                m["subject"],
-                m["question"],
-                m["user"],
-                m["correct"],
-                cache_key,
-            )
-
-            st.markdown(
-                f"""
-                <div class="mistake-item">
-                    <div class="mistake-q">{safe_text(m['question'])}</div>
+            ai_exp = get_mistake_explanation(m["subject"],m["question"],m["user"],m["correct"],cache_key)
+            bc = "#22c55e" if m["is_correct"] else "var(--danger)"
+            ic = "✅" if m["is_correct"] else "❌"
+            st.markdown(f"""
+                <div class="mistake-item" style="border-right-color:{bc};">
+                    <div class="mistake-q">{ic} {safe_text(m['question'])}</div>
                     <div class="mistake-a"><strong>إجابتك:</strong> {safe_text(m['user'])}</div>
                     <div class="mistake-a"><strong>الإجابة الصحيحة:</strong> {safe_text(m['correct'])}</div>
                     <div class="mistake-a"><strong>شرح مبسط:</strong> {safe_text(ai_exp)}</div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-
+                </div>""", unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
-    else:
-        st.balloons()
-        st.success("ممتاز جدًا! إجاباتك كلها صحيحة بدون أي أخطاء.")
+        if not mistakes:
+            st.balloons()
+            st.success("ممتاز جدًا! إجاباتك كلها صحيحة بدون أي أخطاء.")
 
-    # FIX: build ai_feedback inside result block so it clears correctly
+    # AI Feedback
     if st.session_state.get("ai_feedback") is None:
         try:
-            ai_feedback = build_ai_exam_feedback(
-                subject=st.session_state.get("test_subject", "التحول الرقمي"),
-                user_name=st.session_state.get("user_name", "طالب"),
+            st.session_state["ai_feedback"] = build_ai_exam_feedback(
+                subject=st.session_state.get("test_subject","التحول الرقمي"),
+                user_name=st.session_state.get("user_name","طالب"),
                 mistakes=mistakes,
             )
-            st.session_state["ai_feedback"] = ai_feedback
         except Exception as e:
-            print("AI feedback hook failed:", e)
-            st.session_state["ai_feedback"] = {
-                "summary_ar": "تعذر إنشاء التغذية الراجعة الذكية.",
-                "mistakes": []
-            }
+            print("AI feedback failed:", e)
+            st.session_state["ai_feedback"] = {"summary_ar":"تعذر إنشاء التغذية الراجعة الذكية.","mistakes":[]}
 
-    # FIX: render ai_feedback INSIDE the result block (not outside)
     if st.session_state.get("ai_feedback"):
-        ai_feedback = st.session_state["ai_feedback"]
+        af = st.session_state["ai_feedback"]
         st.markdown('<div class="ai-feedback-box">', unsafe_allow_html=True)
         st.markdown('<div class="ai-feedback-title">🤖 شرح مبسط وتحليل ذكي للأداء</div>', unsafe_allow_html=True)
-        st.markdown(
-            f'<div class="ai-feedback-summary">{safe_text(ai_feedback.get("summary_ar", ""))}</div>',
-            unsafe_allow_html=True,
-        )
-
-        for idx, item in enumerate(ai_feedback.get("mistakes", []), start=1):
-            st.markdown(
-                f"""
+        st.markdown(f'<div class="ai-feedback-summary">{safe_text(af.get("summary_ar",""))}</div>', unsafe_allow_html=True)
+        for idx, item in enumerate(af.get("mistakes",[]), start=1):
+            st.markdown(f"""
                 <div class="ai-feedback-item">
-                    <div class="mistake-q">{idx}) {safe_text(item.get('question', ''))}</div>
-                    <div class="mistake-a"><strong>إجابتك:</strong> {safe_text(item.get('user_answer', ''))}</div>
-                    <div class="mistake-a"><strong>الإجابة الصحيحة:</strong> {safe_text(item.get('correct_answer', ''))}</div>
-                    <div class="mistake-a"><strong>الشرح:</strong> {safe_text(item.get('brief_explanation_ar', ''))}</div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-
+                    <div class="mistake-q">{idx}) {safe_text(item.get('question',''))}</div>
+                    <div class="mistake-a"><strong>إجابتك:</strong> {safe_text(item.get('user_answer',''))}</div>
+                    <div class="mistake-a"><strong>الإجابة الصحيحة:</strong> {safe_text(item.get('correct_answer',''))}</div>
+                    <div class="mistake-a"><strong>الشرح:</strong> {safe_text(item.get('brief_explanation_ar',''))}</div>
+                </div>""", unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
     c1, _ = st.columns([1.2, 4])
     with c1:
         if st.button("مسح النتيجة من الشاشة", key="clear_last_result"):
-            reset_last_result()
-            clear_exam_answers()
-            st.rerun()
+            reset_last_result(); clear_exam_answers(); st.rerun()
 
     st.markdown("</div>", unsafe_allow_html=True)
