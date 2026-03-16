@@ -777,12 +777,23 @@ h1,h2,h3,h4,h5 {
 [data-testid="stRadio"] [role="radio"] > div,
 [data-testid="stRadio"] [role="radio"] label,
 [data-testid="stRadio"] [role="radio"] p,
-[data-testid="stRadio"] [role="radio"] span {
+[data-testid="stRadio"] [role="radio"] span,
+[data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"],
+[data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"] * {
     color: var(--text) !important;
+    -webkit-text-fill-color: var(--text) !important;
+    opacity: 1 !important;
     line-height: 1.9 !important;
     white-space: normal !important;
     overflow-wrap: anywhere;
+    word-break: break-word !important;
     text-align: right !important;
+}
+
+[data-testid="stRadio"] [role="radio"] * {
+    color: var(--text) !important;
+    -webkit-text-fill-color: var(--text) !important;
+    caret-color: var(--text) !important;
 }
 
 [data-testid="stRadio"] [role="radio"][aria-checked="true"] {
@@ -856,6 +867,18 @@ h1,h2,h3,h4,h5 {
     [data-testid="stRadio"] [role="radio"] {
         padding: 12px !important;
         min-height: 52px;
+    }
+
+    [data-testid="stRadio"] [role="radio"],
+    [data-testid="stRadio"] [role="radio"] *,
+    [data-testid="stRadio"] [role="radio"] label,
+    [data-testid="stRadio"] [role="radio"] span,
+    [data-testid="stRadio"] [role="radio"] p,
+    [data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"],
+    [data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"] * {
+        color: #11233b !important;
+        -webkit-text-fill-color: #11233b !important;
+        opacity: 1 !important;
     }
 }
 
