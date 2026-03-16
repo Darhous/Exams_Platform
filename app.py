@@ -70,8 +70,8 @@ Path("exports").mkdir(exist_ok=True)
 Path("certificates").mkdir(exist_ok=True)
 
 st.set_page_config(
-    page_title="منصة امتحانات التحول الرقمي",
-    page_icon="🎓",
+    page_title="🛡️ منصة امتحانات التحول الرقمي - جامعة جنوب الوادي (المجموعة 205)",
+    page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -713,131 +713,152 @@ div.stFormSubmitButton > button:hover {
     border-radius: 14px !important;
 }
 
-[data-testid="stSelectbox"] > label,
-[data-testid="stRadio"] > label,
-[data-testid="stNumberInput"] > label,
-[data-testid="stTextInput"] > label,
-[data-testid="stTextArea"] > label {
-    color: var(--text) !important;
-    font-weight: 900 !important;
-    font-size: 15px !important;
-}
-
-[data-testid="stSelectbox"] [data-baseweb="select"] > div,
-[data-testid="stNumberInput"] input {
-    background: #fbfdff !important;
-    color: var(--text) !important;
-    border: 1px solid #dbe6f5 !important;
-}
-
-[data-testid="stSelectbox"] [data-baseweb="select"] * {
-    color: var(--text) !important;
-}
-
-[data-testid="stRadio"] {
-    direction: rtl;
-    text-align: right;
-}
-
-[data-testid="stRadio"] [role="radiogroup"] {
-    gap: 10px;
-}
-
-[data-testid="stRadio"] [role="radiogroup"] label {
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 12px 14px !important;
-    border-radius: 16px !important;
-    border: 1px solid #dbe6f5 !important;
-    background: #fbfdff !important;
-    align-items: flex-start !important;
-}
-
-[data-testid="stRadio"] [role="radiogroup"] label + label {
-    margin-top: 10px !important;
-}
-
-[data-testid="stRadio"] [role="radiogroup"] p,
-[data-testid="stRadio"] [role="radiogroup"] span {
-    color: var(--text) !important;
-    line-height: 1.9 !important;
-    font-weight: 800 !important;
-    white-space: normal !important;
-    word-break: break-word;
-}
-
-.answer-label {
-    color: var(--text);
-    font-size: 15px;
-    font-weight: 900;
-    margin-bottom: 10px;
-    line-height: 1.8;
-}
-
 h1,h2,h3,h4,h5 {
     color: var(--text);
     font-weight: 900 !important;
 }
 
-@media (max-width: 768px) {
+
+/* ===== Widget + exam layout hardening ===== */
+[data-testid="stSelectbox"] label,
+[data-testid="stNumberInput"] label,
+[data-testid="stRadio"] label,
+[data-testid="stTextInput"] label,
+[data-testid="stTextArea"] label,
+[data-testid="stFileUploader"] label {
+    color: var(--text) !important;
+    font-weight: 900 !important;
+}
+
+[data-baseweb="select"] > div,
+[data-testid="stNumberInput"] input,
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea {
+    background: #ffffff !important;
+    color: var(--text) !important;
+    min-height: 48px;
+    line-height: 1.7 !important;
+}
+
+[data-baseweb="select"] * {
+    color: var(--text) !important;
+}
+
+[data-testid="stRadio"] {
+    direction: rtl !important;
+}
+
+[data-testid="stRadio"] > div {
+    width: 100%;
+}
+
+[data-testid="stRadio"] [role="radiogroup"] {
+    direction: rtl !important;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+}
+
+[data-testid="stRadio"] [role="radio"] {
+    background: #ffffff !important;
+    border: 1px solid #dbe6f5 !important;
+    border-radius: 16px !important;
+    padding: 12px 14px !important;
+    min-height: 54px;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+[data-testid="stRadio"] [role="radio"] > div,
+[data-testid="stRadio"] [role="radio"] label,
+[data-testid="stRadio"] [role="radio"] p,
+[data-testid="stRadio"] [role="radio"] span {
+    color: var(--text) !important;
+    line-height: 1.9 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    text-align: right !important;
+}
+
+[data-testid="stRadio"] [role="radio"][aria-checked="true"] {
+    background: #edf4ff !important;
+    border-color: #9ec5ff !important;
+}
+
+.question-card [data-testid="stRadio"] label,
+.question-card [data-testid="stRadio"] p,
+.question-card [data-testid="stRadio"] span {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+}
+
+.question-card, .question-card * {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.library-book, .library-book * {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+@media (max-width: 900px) {
     .block-container {
-        padding-top: 0.6rem;
-        padding-bottom: 1.2rem;
-        padding-left: 0.7rem;
-        padding-right: 0.7rem;
+        padding-top: .6rem;
+        padding-left: .7rem;
+        padding-right: .7rem;
     }
 
     .main-hero,
+    .glass-entry,
     .section-card,
     .section-card-soft,
-    .glass-entry,
     .question-card,
-    .library-book,
+    .result-hero,
     .summary-panel,
     .mistakes-box,
-    .ai-feedback-box,
-    .result-shell {
+    .ai-feedback-box {
+        padding: 18px 16px !important;
         border-radius: 20px !important;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
     }
 
-    .hero-title,
-    .section-title,
-    .exam-title {
+    .hero-title {
         font-size: 24px !important;
         line-height: 1.6 !important;
     }
 
+    .hero-subtitle,
+    .section-subtitle,
+    .question-title,
+    .summary-text,
+    .mistake-q,
+    .mistake-a {
+        line-height: 2 !important;
+    }
+
     .question-title {
         font-size: 18px !important;
-        line-height: 2 !important;
     }
 
-    .question-meta,
-    .small-muted,
-    .summary-text,
-    .mistake-a,
-    .answer-label {
-        line-height: 2 !important;
+    .result-grid {
+        grid-template-columns: 1fr !important;
     }
 
-    .exam-chip-row,
-    .hero-badge-row,
-    .info-chip-row {
-        gap: 8px !important;
+    [data-testid="stRadio"] [role="radiogroup"] {
+        gap: 8px;
     }
 
-    .stTabs [data-baseweb="tab-list"] {
-        flex-wrap: wrap;
-    }
-
-    div.stButton > button,
-    div.stDownloadButton > button,
-    div.stFormSubmitButton > button {
-        min-height: 48px;
+    [data-testid="stRadio"] [role="radio"] {
+        padding: 12px !important;
+        min-height: 52px;
     }
 }
+
 </style>
 """,
     unsafe_allow_html=True,
@@ -920,6 +941,38 @@ def localize_subject_column(df, col_name="subject"):
     new_df[col_name] = new_df[col_name].apply(normalize_subject_label)
     return new_df
 
+
+
+
+def get_book_field(row, field_name, default=""):
+    try:
+        if hasattr(row, 'index') and field_name in row.index:
+            value = row[field_name]
+            return default if pd.isna(value) else value
+    except Exception:
+        pass
+    return default
+
+
+def get_all_books_df():
+    queries = [
+        "SELECT * FROM books ORDER BY created_at DESC, id DESC",
+        "SELECT * FROM books ORDER BY id DESC",
+    ]
+    books_df = pd.DataFrame()
+    for query in queries:
+        try:
+            books_df = fetch_df(query)
+            break
+        except Exception:
+            continue
+
+    if books_df is None or books_df.empty:
+        return pd.DataFrame()
+
+    if "subject" in books_df.columns:
+        books_df = localize_subject_column(books_df, "subject")
+    return books_df
 
 def clear_exam_answers():
     answer_keys = [k for k in st.session_state.keys() if str(k).startswith("answer_")]
@@ -1275,7 +1328,7 @@ with top_left:
     st.markdown(
         f"""
         <div class="main-hero">
-            <div class="hero-title">{role_emoji} منصة امتحانات التحول الرقمي</div>
+            <div class="hero-title">🛡️ منصة امتحانات التحول الرقمي - جامعة جنوب الوادي (المجموعة 205)</div>
             <div class="hero-subtitle">
                 مرحباً <b>{safe_text(st.session_state["user_name"])}</b>
                 — الحالة: <b>{role_text}</b>
@@ -1544,34 +1597,63 @@ if st.session_state["is_admin"]:
 
         with admin_tabs[2]:
             st.markdown('<div class="section-card">', unsafe_allow_html=True)
-            st.markdown("### 📥 رفع كتاب أو مذكرة PDF")
+            st.markdown("### 📥 رفع الكتب وملفات PDF")
             st.markdown(
-                '<div class="small-muted">سيظهر الكتاب فوراً داخل المكتبة حسب المادة المختارة.</div>',
+                '<div class="small-muted">يمكنك رفع ملف واحد أو عدة ملفات دفعة واحدة، ثم تحديد اسم كل كتاب والمادة الخاصة به قبل الحفظ.</div>',
                 unsafe_allow_html=True,
             )
 
-            with st.form("upload_book_form"):
-                col1, col2 = st.columns(2)
-                with col1:
-                    up_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS, key="book_subject")
-                with col2:
-                    up_name = st.text_input("اسم الكتاب الظاهر للطالب")
+            uploaded_files = st.file_uploader(
+                "ارفع ملف PDF أو أكثر",
+                type=["pdf"],
+                accept_multiple_files=True,
+                key="multi_books_uploader",
+            )
 
-                up_file = st.file_uploader("ارفع ملف PDF", type=["pdf"])
-                up_submit = st.form_submit_button("رفع الكتاب")
+            if uploaded_files:
+                st.markdown("#### الملفات الجاهزة للحفظ")
+                upload_payload = []
+                for idx, up_file in enumerate(uploaded_files):
+                    default_name = Path(up_file.name).stem
+                    st.markdown('<div class="library-book">', unsafe_allow_html=True)
+                    c_file1, c_file2 = st.columns([1.8, 1.2])
+                    with c_file1:
+                        book_name = st.text_input(
+                            f"اسم الكتاب الظاهر للطالب #{idx + 1}",
+                            value=default_name,
+                            key=f"book_name_{idx}",
+                        )
+                    with c_file2:
+                        book_subject_label = st.selectbox(
+                            f"المادة #{idx + 1}",
+                            DISPLAY_SUBJECTS,
+                            key=f"book_subject_{idx}",
+                        )
 
-                if up_submit:
-                    if not up_name.strip() or up_file is None:
-                        st.error("يرجى كتابة اسم الكتاب ورفع الملف.")
+                    st.markdown(
+                        f"<div class='small-muted'>الملف الأصلي: {safe_text(up_file.name)}</div>",
+                        unsafe_allow_html=True,
+                    )
+                    st.markdown("</div>", unsafe_allow_html=True)
+                    upload_payload.append((up_file, book_name.strip(), SUBJECT_MAP[book_subject_label]))
+
+                if st.button("حفظ كل الكتب المرفوعة", key="save_all_books_btn"):
+                    missing_names = [str(i + 1) for i, (_, name, _) in enumerate(upload_payload) if not name]
+                    if missing_names:
+                        st.error("يرجى كتابة اسم ظاهر لكل كتاب قبل الحفظ.")
                     else:
-                        up_subject_code = SUBJECT_MAP[up_subject_label]
-                        safe_name = f"{uuid.uuid4().hex}.pdf"
-                        file_path = Path("books") / safe_name
-                        with open(file_path, "wb") as f:
-                            f.write(up_file.getbuffer())
-                        save_book(up_subject_code, up_name.strip(), safe_name)
-                        st.success("تم رفع الكتاب بنجاح.")
+                        saved_count = 0
+                        for up_file, custom_name, subject_code in upload_payload:
+                            safe_name = f"{uuid.uuid4().hex}.pdf"
+                            file_path = Path("books") / safe_name
+                            with open(file_path, "wb") as f:
+                                f.write(up_file.getbuffer())
+                            save_book(subject_code, custom_name, safe_name)
+                            saved_count += 1
+                        st.success(f"تم حفظ {saved_count} كتاب/ملف بنجاح.")
                         st.rerun()
+            else:
+                st.info("اختر ملف PDF واحد أو أكثر لبدء الرفع.")
 
             st.markdown("</div>", unsafe_allow_html=True)
 
@@ -1718,39 +1800,89 @@ with tabs[student_offset + 2]:
     st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">المكتبة الرقمية والتحميل</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="section-subtitle">تصفح الكتب والمذكرات حسب المادة وتحميلها مباشرة بصيغة PDF.</div>',
+        '<div class="section-subtitle">تصفح الكتب والمذكرات حسب المادة أو استعرض جميع الكتب المتاحة وحمّلها مباشرة بصيغة PDF.</div>',
         unsafe_allow_html=True,
     )
 
-    lib_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS, key="library_subject")
-    lib_subject_code = SUBJECT_MAP[lib_subject_label]
-    books_df = get_books_by_subject(lib_subject_code)
+    library_tabs = st.tabs(["📚 حسب المادة", "🗂️ جميع الكتب"])
 
-    if not books_df.empty:
-        st.markdown(f"### 📚 الكتب المتاحة لمادة: {safe_text(lib_subject_label)}")
-        for idx, row in books_df.iterrows():
-            st.markdown('<div class="library-book">', unsafe_allow_html=True)
-            b1, b2 = st.columns([4.5, 1.5])
-            with b1:
-                st.markdown(f"#### {safe_text(row['custom_name'])}")
-                st.markdown(
-                    f"<div class='small-muted'>تمت إضافته بتاريخ: {safe_text(row['created_at'])}</div>",
-                    unsafe_allow_html=True,
-                )
-            with b2:
-                file_path = Path("books") / row["file_name"]
-                if file_path.exists():
-                    with open(file_path, "rb") as pdf_file:
-                        st.download_button(
-                            label="⬇️ تحميل الملف",
-                            data=pdf_file,
-                            file_name=f"{row['custom_name']}.pdf",
-                            mime="application/pdf",
-                            key=f"dl_{idx}_{row['id']}",
-                        )
-            st.markdown("</div>", unsafe_allow_html=True)
-    else:
-        st.info("لا توجد كتب أو مذكرات مرفوعة لهذه المادة حاليًا.")
+    with library_tabs[0]:
+        lib_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS, key="library_subject")
+        lib_subject_code = SUBJECT_MAP[lib_subject_label]
+        books_df = get_books_by_subject(lib_subject_code)
+        books_df = localize_subject_column(books_df, "subject")
+
+        if not books_df.empty:
+            st.markdown(f"### 📚 الكتب المتاحة لمادة: {safe_text(lib_subject_label)}")
+            for idx, row in books_df.iterrows():
+                st.markdown('<div class="library-book">', unsafe_allow_html=True)
+                b1, b2 = st.columns([4.5, 1.5])
+                custom_name = get_book_field(row, "custom_name", "كتاب بدون اسم")
+                created_at = get_book_field(row, "created_at", "غير متاح")
+                file_name = get_book_field(row, "file_name", "")
+                row_id = get_book_field(row, "id", idx)
+                with b1:
+                    st.markdown(f"#### {safe_text(custom_name)}")
+                    st.markdown(
+                        f"<div class='small-muted'>المادة: {safe_text(lib_subject_label)} — تمت إضافته بتاريخ: {safe_text(created_at)}</div>",
+                        unsafe_allow_html=True,
+                    )
+                with b2:
+                    file_path = Path("books") / str(file_name)
+                    if file_name and file_path.exists():
+                        with open(file_path, "rb") as pdf_file:
+                            st.download_button(
+                                label="⬇️ تحميل الملف",
+                                data=pdf_file,
+                                file_name=f"{custom_name}.pdf",
+                                mime="application/pdf",
+                                key=f"dl_subject_{idx}_{row_id}",
+                            )
+                    else:
+                        st.caption("الملف غير متوفر")
+                st.markdown("</div>", unsafe_allow_html=True)
+        else:
+            st.info("لا توجد كتب أو مذكرات مرفوعة لهذه المادة حاليًا.")
+
+    with library_tabs[1]:
+        all_books_df = get_all_books_df()
+        if not all_books_df.empty:
+            st.markdown("### 🗂️ جميع الكتب المتاحة")
+            for idx, row in all_books_df.iterrows():
+                st.markdown('<div class="library-book">', unsafe_allow_html=True)
+                b1, b2 = st.columns([4.5, 1.5])
+                custom_name = get_book_field(row, "custom_name", "كتاب بدون اسم")
+                created_at = get_book_field(row, "created_at", "غير متاح")
+                file_name = get_book_field(row, "file_name", "")
+                row_id = get_book_field(row, "id", idx)
+                row_subject = normalize_subject_label(get_book_field(row, "subject", "غير محددة"))
+                with b1:
+                    st.markdown(f"#### {safe_text(custom_name)}")
+                    st.markdown(
+                        f"<div class='small-muted'>المادة: {safe_text(row_subject)} — تمت إضافته بتاريخ: {safe_text(created_at)}</div>",
+                        unsafe_allow_html=True,
+                    )
+                with b2:
+                    file_path = Path("books") / str(file_name)
+                    if file_name and file_path.exists():
+                        with open(file_path, "rb") as pdf_file:
+                            st.download_button(
+                                label="⬇️ تحميل الملف",
+                                data=pdf_file,
+                                file_name=f"{custom_name}.pdf",
+                                mime="application/pdf",
+                                key=f"dl_all_{idx}_{row_id}",
+                            )
+                    else:
+                        st.caption("الملف غير متوفر")
+                st.markdown("</div>", unsafe_allow_html=True)
+        else:
+            st.info("لا توجد كتب مرفوعة داخل المكتبة حالياً.")
+
+    st.markdown(
+        '<div class="small-muted" style="margin-top:14px; text-align:center; font-size:14px;">جميع الحقوق محفوظة لمؤلفي الكتب.</div>',
+        unsafe_allow_html=True,
+    )
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -1860,28 +1992,15 @@ if st.session_state.get("test_active") and st.session_state.get("test_data") is 
                 unsafe_allow_html=True,
             )
 
-            st.markdown('<div class="answer-label">اختر الإجابة</div>', unsafe_allow_html=True)
             if row["q_type"] == "اختياري":
                 options = [
                     str(opt).strip()
                     for opt in [row["opt1"], row["opt2"], row["opt3"], row["opt4"]]
                     if str(opt).strip()
                 ]
-                st.radio(
-                    "اختر إجابة",
-                    options,
-                    key=f"answer_{qid}",
-                    index=None,
-                    label_visibility="collapsed",
-                )
+                st.radio("اختر إجابة", options, key=f"answer_{qid}", index=None)
             else:
-                st.radio(
-                    "اختر إجابة",
-                    ["صح", "خطأ"],
-                    key=f"answer_{qid}",
-                    index=None,
-                    label_visibility="collapsed",
-                )
+                st.radio("اختر إجابة", ["صح", "خطأ"], key=f"answer_{qid}", index=None)
 
             with st.expander("🚩 الإبلاغ عن خطأ في السؤال"):
                 note = st.text_area("اكتب ملاحظتك", key=f"flag_note_{qid}")
@@ -1906,6 +2025,7 @@ if st.session_state.get("test_active") and st.session_state.get("test_data") is 
 # Last Result View
 # =========================
 if st.session_state.get("submitted") and st.session_state.get("last_score") is not None:
+    st.markdown('<div class="result-shell"></div>', unsafe_allow_html=True)
     score = st.session_state["last_score"]
     total = st.session_state["last_total"]
     percent = st.session_state["last_percent"]
