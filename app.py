@@ -744,6 +744,7 @@ h1,h2,h3,h4,h5 {
     color: var(--text) !important;
 }
 
+/* ===== FIX 1: Radio RTL — السؤال والإجابة في نفس الاتجاه ===== */
 [data-testid="stRadio"] {
     direction: rtl !important;
 }
@@ -754,9 +755,9 @@ h1,h2,h3,h4,h5 {
 
 [data-testid="stRadio"] [role="radiogroup"] {
     direction: rtl !important;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
     gap: 10px;
     width: 100%;
 }
@@ -765,13 +766,15 @@ h1,h2,h3,h4,h5 {
     background: #ffffff !important;
     border: 1px solid #dbe6f5 !important;
     border-radius: 16px !important;
-    padding: 12px 14px !important;
+    padding: 12px 16px 12px 12px !important;
     min-height: 54px;
+    width: 100% !important;
+    box-sizing: border-box !important;
     display: flex !important;
+    flex-direction: row-reverse !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
-    width: 100%;
-    box-sizing: border-box;
+    gap: 10px;
 }
 
 [data-testid="stRadio"] [role="radio"] > div,
@@ -780,20 +783,22 @@ h1,h2,h3,h4,h5 {
 [data-testid="stRadio"] [role="radio"] span,
 [data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"],
 [data-testid="stRadio"] [role="radio"] [data-testid="stMarkdownContainer"] * {
-    color: var(--text) !important;
-    -webkit-text-fill-color: var(--text) !important;
+    color: #11233b !important;
+    -webkit-text-fill-color: #11233b !important;
     opacity: 1 !important;
     line-height: 1.9 !important;
     white-space: normal !important;
-    overflow-wrap: anywhere;
+    overflow-wrap: anywhere !important;
     word-break: break-word !important;
     text-align: right !important;
+    flex: 1 !important;
+    min-width: 0 !important;
 }
 
 [data-testid="stRadio"] [role="radio"] * {
-    color: var(--text) !important;
-    -webkit-text-fill-color: var(--text) !important;
-    caret-color: var(--text) !important;
+    color: #11233b !important;
+    -webkit-text-fill-color: #11233b !important;
+    caret-color: #11233b !important;
 }
 
 [data-testid="stRadio"] [role="radio"][aria-checked="true"] {
@@ -818,6 +823,7 @@ h1,h2,h3,h4,h5 {
     text-align: right !important;
 }
 
+/* ===== FIX 2: Mobile — نص أبيض + overflow ===== */
 @media (max-width: 900px) {
     .block-container {
         padding-top: .6rem;
@@ -839,21 +845,42 @@ h1,h2,h3,h4,h5 {
     }
 
     .hero-title {
-        font-size: 24px !important;
+        font-size: 22px !important;
         line-height: 1.6 !important;
+    }
+
+    .question-title {
+        font-size: 17px !important;
+        overflow-wrap: anywhere !important;
+        word-break: break-word !important;
     }
 
     .hero-subtitle,
     .section-subtitle,
-    .question-title,
     .summary-text,
     .mistake-q,
     .mistake-a {
         line-height: 2 !important;
+        overflow-wrap: anywhere !important;
     }
 
-    .question-title {
-        font-size: 18px !important;
+    /* إصلاح النص الأبيض على الموبايل */
+    .question-card *,
+    .section-card *,
+    .section-card-soft *,
+    .glass-entry *,
+    .mistake-item *,
+    .summary-panel *,
+    .result-stat-card *,
+    .ai-feedback-item * {
+        color: #11233b !important;
+        -webkit-text-fill-color: #11233b !important;
+    }
+
+    .result-hero,
+    .result-hero * {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
     }
 
     .result-grid {
@@ -879,6 +906,19 @@ h1,h2,h3,h4,h5 {
         color: #11233b !important;
         -webkit-text-fill-color: #11233b !important;
         opacity: 1 !important;
+    }
+
+    .info-chip,
+    .hero-badge,
+    .exam-chip {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+    }
+
+    .info-chip-row,
+    .hero-badge-row,
+    .exam-chip-row {
+        gap: 7px !important;
     }
 }
 
@@ -909,6 +949,8 @@ defaults = {
     "last_mistakes": [],
     "ai_feedback": None,
     "mistake_explanations": {},
+    # FIX: track first login to avoid repeated welcome messages
+    "welcome_sent": False,
 }
 for k, v in defaults.items():
     if k not in st.session_state:
@@ -965,8 +1007,6 @@ def localize_subject_column(df, col_name="subject"):
     return new_df
 
 
-
-
 def get_book_field(row, field_name, default=""):
     try:
         if hasattr(row, 'index') and field_name in row.index:
@@ -978,17 +1018,15 @@ def get_book_field(row, field_name, default=""):
 
 
 def get_all_books_df():
-    queries = [
-        "SELECT * FROM books ORDER BY created_at DESC, id DESC",
-        "SELECT * FROM books ORDER BY id DESC",
-    ]
+    # FIX: explicit fallback if created_at column missing
     books_df = pd.DataFrame()
-    for query in queries:
+    try:
+        books_df = fetch_df("SELECT * FROM books ORDER BY created_at DESC, id DESC")
+    except Exception:
         try:
-            books_df = fetch_df(query)
-            break
+            books_df = fetch_df("SELECT * FROM books ORDER BY id DESC")
         except Exception:
-            continue
+            pass
 
     if books_df is None or books_df.empty:
         return pd.DataFrame()
@@ -996,6 +1034,7 @@ def get_all_books_df():
     if "subject" in books_df.columns:
         books_df = localize_subject_column(books_df, "subject")
     return books_df
+
 
 def clear_exam_answers():
     answer_keys = [k for k in st.session_state.keys() if str(k).startswith("answer_")]
@@ -1111,11 +1150,16 @@ def get_mistake_explanation(subject, question, user_answer, correct_answer, cach
 
 
 def send_login_whatsapp_message():
+    # FIX: only send welcome message once per session
+    if st.session_state.get("welcome_sent"):
+        return True, "already_sent"
+
     user_name = st.session_state.get("user_name", "")
     user_phone = st.session_state.get("user_phone", "")
 
     try:
         result = send_welcome_notification(user_name, user_phone)
+        st.session_state["welcome_sent"] = True
         print("send_welcome_notification result:", result)
         return result
     except Exception as e:
@@ -1176,6 +1220,7 @@ def send_student_exam_notifications(score, total, percent, time_str, mistakes, f
 
 
 def submit_exam(df_questions):
+    # FIX: guard against double submission
     if st.session_state.get("submitted"):
         return
 
@@ -1229,6 +1274,8 @@ def submit_exam(df_questions):
     st.session_state["last_mistakes"] = mistakes
     st.session_state["submitted"] = True
     st.session_state["test_active"] = False
+    # FIX: rerun after submission so page updates immediately
+    st.rerun()
 
 
 # =========================
@@ -1318,6 +1365,7 @@ if not st.session_state["entered"]:
                     st.session_state["user_name"] = clean_name
                     st.session_state["user_phone"] = clean_phone
                     st.session_state["is_admin"] = admin_state
+                    st.session_state["welcome_sent"] = False
 
                     save_user(clean_name, clean_phone, admin_state)
                     send_login_whatsapp_message()
@@ -1399,8 +1447,9 @@ st.markdown(
 # =========================
 # Tabs
 # =========================
+# FIX: use named tab variables instead of index offsets to avoid silent bugs
 if st.session_state["is_admin"]:
-    tabs = st.tabs(
+    tab_dashboard, tab_system, tab_subject, tab_mixed, tab_library = st.tabs(
         [
             "📊 لوحة الإدارة",
             "⚙️ إدارة النظام",
@@ -1410,7 +1459,7 @@ if st.session_state["is_admin"]:
         ]
     )
 else:
-    tabs = st.tabs(
+    tab_subject, tab_mixed, tab_library = st.tabs(
         [
             "📚 اختبار المواد",
             "🏆 الامتحان المجمع",
@@ -1423,7 +1472,7 @@ else:
 # Admin Dashboard
 # =========================
 if st.session_state["is_admin"]:
-    with tabs[0]:
+    with tab_dashboard:
         st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">لوحة التحكم الرسومية</div>', unsafe_allow_html=True)
         st.markdown(
@@ -1518,7 +1567,7 @@ if st.session_state["is_admin"]:
                 st.info("لا توجد بلاغات حالياً.")
         st.markdown("</div>", unsafe_allow_html=True)
 
-    with tabs[1]:
+    with tab_system:
         st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">إدارة النظام</div>', unsafe_allow_html=True)
         st.markdown(
@@ -1739,13 +1788,10 @@ if st.session_state["is_admin"]:
         st.markdown("</div>", unsafe_allow_html=True)
 
 
-student_offset = 2 if st.session_state["is_admin"] else 0
-
-
 # =========================
 # Subject Exam
 # =========================
-with tabs[student_offset]:
+with tab_subject:
     st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">اختبار المواد</div>', unsafe_allow_html=True)
     st.markdown(
@@ -1787,7 +1833,7 @@ with tabs[student_offset]:
 # =========================
 # Comprehensive Exam
 # =========================
-with tabs[student_offset + 1]:
+with tab_mixed:
     st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">الامتحان المجمع</div>', unsafe_allow_html=True)
     st.markdown(
@@ -1819,7 +1865,7 @@ with tabs[student_offset + 1]:
 # =========================
 # Library
 # =========================
-with tabs[student_offset + 2]:
+with tab_library:
     st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">المكتبة الرقمية والتحميل</div>', unsafe_allow_html=True)
     st.markdown(
@@ -2003,12 +2049,13 @@ if st.session_state.get("test_active") and st.session_state.get("test_data") is 
                 reset_test_state()
                 st.rerun()
 
-        for idx, row in df_questions.iterrows():
+        # FIX: use enumerate for reliable sequential numbering
+        for i, (_, row) in enumerate(df_questions.iterrows()):
             qid = int(row["id"])
             row_subject_label = normalize_subject_label(row["subject"])
 
             st.markdown('<div class="question-card">', unsafe_allow_html=True)
-            st.markdown(f'<div class="question-index">سؤال رقم {idx + 1}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="question-index">سؤال رقم {i + 1}</div>', unsafe_allow_html=True)
             st.markdown(f'<div class="question-title">{safe_text(row["question"])}</div>', unsafe_allow_html=True)
             st.markdown(
                 f'<div class="question-meta">المادة: {safe_text(row_subject_label)} | النوع: {safe_text(row["q_type"])}</div>',
@@ -2048,7 +2095,6 @@ if st.session_state.get("test_active") and st.session_state.get("test_data") is 
 # Last Result View
 # =========================
 if st.session_state.get("submitted") and st.session_state.get("last_score") is not None:
-    st.markdown('<div class="result-shell"></div>', unsafe_allow_html=True)
     score = st.session_state["last_score"]
     total = st.session_state["last_total"]
     percent = st.session_state["last_percent"]
@@ -2197,6 +2243,7 @@ if st.session_state.get("submitted") and st.session_state.get("last_score") is n
         st.balloons()
         st.success("ممتاز جدًا! إجاباتك كلها صحيحة بدون أي أخطاء.")
 
+    # FIX: build ai_feedback inside result block so it clears correctly
     if st.session_state.get("ai_feedback") is None:
         try:
             ai_feedback = build_ai_exam_feedback(
@@ -2212,36 +2259,36 @@ if st.session_state.get("submitted") and st.session_state.get("last_score") is n
                 "mistakes": []
             }
 
+    # FIX: render ai_feedback INSIDE the result block (not outside)
+    if st.session_state.get("ai_feedback"):
+        ai_feedback = st.session_state["ai_feedback"]
+        st.markdown('<div class="ai-feedback-box">', unsafe_allow_html=True)
+        st.markdown('<div class="ai-feedback-title">🤖 شرح مبسط وتحليل ذكي للأداء</div>', unsafe_allow_html=True)
+        st.markdown(
+            f'<div class="ai-feedback-summary">{safe_text(ai_feedback.get("summary_ar", ""))}</div>',
+            unsafe_allow_html=True,
+        )
+
+        for idx, item in enumerate(ai_feedback.get("mistakes", []), start=1):
+            st.markdown(
+                f"""
+                <div class="ai-feedback-item">
+                    <div class="mistake-q">{idx}) {safe_text(item.get('question', ''))}</div>
+                    <div class="mistake-a"><strong>إجابتك:</strong> {safe_text(item.get('user_answer', ''))}</div>
+                    <div class="mistake-a"><strong>الإجابة الصحيحة:</strong> {safe_text(item.get('correct_answer', ''))}</div>
+                    <div class="mistake-a"><strong>الشرح:</strong> {safe_text(item.get('brief_explanation_ar', ''))}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
     c1, _ = st.columns([1.2, 4])
     with c1:
         if st.button("مسح النتيجة من الشاشة", key="clear_last_result"):
             reset_last_result()
             clear_exam_answers()
             st.rerun()
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-
-if st.session_state.get("ai_feedback"):
-    ai_feedback = st.session_state["ai_feedback"]
-    st.markdown('<div class="ai-feedback-box">', unsafe_allow_html=True)
-    st.markdown('<div class="ai-feedback-title">🤖 شرح مبسط وتحليل ذكي للأداء</div>', unsafe_allow_html=True)
-    st.markdown(
-        f'<div class="ai-feedback-summary">{safe_text(ai_feedback.get("summary_ar", ""))}</div>',
-        unsafe_allow_html=True,
-    )
-
-    for idx, item in enumerate(ai_feedback.get("mistakes", []), start=1):
-        st.markdown(
-            f"""
-            <div class="ai-feedback-item">
-                <div class="mistake-q">{idx}) {safe_text(item.get('question', ''))}</div>
-                <div class="mistake-a"><strong>إجابتك:</strong> {safe_text(item.get('user_answer', ''))}</div>
-                <div class="mistake-a"><strong>الإجابة الصحيحة:</strong> {safe_text(item.get('correct_answer', ''))}</div>
-                <div class="mistake-a"><strong>الشرح:</strong> {safe_text(item.get('brief_explanation_ar', ''))}</div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
 
     st.markdown("</div>", unsafe_allow_html=True)
