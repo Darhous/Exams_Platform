@@ -1044,7 +1044,7 @@ if not st.session_state["entered"]:
         st.markdown(
             """
             <div class="main-hero">
-                <div class="hero-title">🎓 منصة امتحانات التحول الرقمي</div>
+                <div class="hero-title">🎓 🛡️ منصة امتحانات التحول الرقمي | منح 205</div>
                 <div class="hero-subtitle">
                     منصة حديثة للاختبارات الإلكترونية، المتابعة الدقيقة، وإظهار النتائج بشكل فوري واحترافي.
                 </div>
