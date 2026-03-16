@@ -70,8 +70,8 @@ Path("exports").mkdir(exist_ok=True)
 Path("certificates").mkdir(exist_ok=True)
 
 st.set_page_config(
-    page_title="🛡️ منصة امتحانات التحول الرقمي - جامعة جنوب الوادي (المجموعة 205)",
-    page_icon="🛡️",
+    page_title="منصة امتحانات التحول الرقمي",
+    page_icon="🎓",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -713,9 +713,130 @@ div.stFormSubmitButton > button:hover {
     border-radius: 14px !important;
 }
 
+[data-testid="stSelectbox"] > label,
+[data-testid="stRadio"] > label,
+[data-testid="stNumberInput"] > label,
+[data-testid="stTextInput"] > label,
+[data-testid="stTextArea"] > label {
+    color: var(--text) !important;
+    font-weight: 900 !important;
+    font-size: 15px !important;
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+[data-testid="stNumberInput"] input {
+    background: #fbfdff !important;
+    color: var(--text) !important;
+    border: 1px solid #dbe6f5 !important;
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] * {
+    color: var(--text) !important;
+}
+
+[data-testid="stRadio"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[data-testid="stRadio"] [role="radiogroup"] {
+    gap: 10px;
+}
+
+[data-testid="stRadio"] [role="radiogroup"] label {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 12px 14px !important;
+    border-radius: 16px !important;
+    border: 1px solid #dbe6f5 !important;
+    background: #fbfdff !important;
+    align-items: flex-start !important;
+}
+
+[data-testid="stRadio"] [role="radiogroup"] label + label {
+    margin-top: 10px !important;
+}
+
+[data-testid="stRadio"] [role="radiogroup"] p,
+[data-testid="stRadio"] [role="radiogroup"] span {
+    color: var(--text) !important;
+    line-height: 1.9 !important;
+    font-weight: 800 !important;
+    white-space: normal !important;
+    word-break: break-word;
+}
+
+.answer-label {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
 h1,h2,h3,h4,h5 {
     color: var(--text);
     font-weight: 900 !important;
+}
+
+@media (max-width: 768px) {
+    .block-container {
+        padding-top: 0.6rem;
+        padding-bottom: 1.2rem;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+    }
+
+    .main-hero,
+    .section-card,
+    .section-card-soft,
+    .glass-entry,
+    .question-card,
+    .library-book,
+    .summary-panel,
+    .mistakes-box,
+    .ai-feedback-box,
+    .result-shell {
+        border-radius: 20px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .hero-title,
+    .section-title,
+    .exam-title {
+        font-size: 24px !important;
+        line-height: 1.6 !important;
+    }
+
+    .question-title {
+        font-size: 18px !important;
+        line-height: 2 !important;
+    }
+
+    .question-meta,
+    .small-muted,
+    .summary-text,
+    .mistake-a,
+    .answer-label {
+        line-height: 2 !important;
+    }
+
+    .exam-chip-row,
+    .hero-badge-row,
+    .info-chip-row {
+        gap: 8px !important;
+    }
+
+    .stTabs [data-baseweb="tab-list"] {
+        flex-wrap: wrap;
+    }
+
+    div.stButton > button,
+    div.stDownloadButton > button,
+    div.stFormSubmitButton > button {
+        min-height: 48px;
+    }
 }
 </style>
 """,
@@ -800,55 +921,6 @@ def localize_subject_column(df, col_name="subject"):
     return new_df
 
 
-def ensure_books_schema():
-    try:
-        schema_df = fetch_df("PRAGMA table_info(books)")
-        if schema_df is None or schema_df.empty or "name" not in schema_df.columns:
-            return
-
-        column_names = set(schema_df["name"].astype(str).tolist())
-
-        if "subject" not in column_names:
-            execute("ALTER TABLE books ADD COLUMN subject TEXT")
-        if "created_at" not in column_names:
-            execute("ALTER TABLE books ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    except Exception:
-        pass
-
-
-def prepare_books_df(df):
-    if df is None:
-        return pd.DataFrame()
-
-    books_df = df.copy()
-    if books_df.empty:
-        return books_df
-
-    if "subject" not in books_df.columns:
-        books_df["subject"] = ""
-    if "created_at" not in books_df.columns:
-        books_df["created_at"] = ""
-    if "custom_name" not in books_df.columns:
-        books_df["custom_name"] = books_df.get("file_name", "بدون اسم")
-    if "file_name" not in books_df.columns:
-        books_df["file_name"] = ""
-
-    books_df["subject"] = books_df["subject"].apply(normalize_subject_label)
-    books_df["created_at"] = books_df["created_at"].fillna("").astype(str)
-    books_df["custom_name"] = books_df["custom_name"].fillna("بدون اسم").astype(str)
-    books_df["file_name"] = books_df["file_name"].fillna("").astype(str)
-    return books_df
-
-
-def get_book_meta(row):
-    subject_value = row["subject"] if "subject" in row.index and pd.notna(row["subject"]) else ""
-    created_at_value = row["created_at"] if "created_at" in row.index and pd.notna(row["created_at"]) else ""
-
-    subject_label = normalize_subject_label(subject_value) if str(subject_value).strip() else "غير محدد"
-    created_label = str(created_at_value).strip() if str(created_at_value).strip() else "غير متاح"
-    return subject_label, created_label
-
-
 def clear_exam_answers():
     answer_keys = [k for k in st.session_state.keys() if str(k).startswith("answer_")]
     flag_keys = [k for k in st.session_state.keys() if str(k).startswith("flag_note_")]
@@ -895,218 +967,6 @@ def get_dashboard_summary():
     avg_percent = round(float(user_results["percent"].mean()), 2) if not user_results.empty else 0
     last_percent = float(user_results.iloc[0]["percent"]) if not user_results.empty else 0
     return total_attempts, avg_percent, last_percent, user_results
-
-
-def get_all_books():
-    try:
-        books_df = fetch_df("SELECT * FROM books ORDER BY created_at DESC")
-    except Exception:
-        books_df = fetch_df("SELECT * FROM books ORDER BY id DESC")
-    return prepare_books_df(books_df)
-
-
-ensure_books_schema()
-
-
-def render_result_section():
-    if not (st.session_state.get("submitted") and st.session_state.get("last_score") is not None):
-        return
-
-    score = st.session_state["last_score"]
-    total = st.session_state["last_total"]
-    percent = st.session_state["last_percent"]
-    time_str = st.session_state["last_time"]
-    mistakes = st.session_state.get("last_mistakes", [])
-    passed = float(percent) >= 50 if isinstance(percent, (int, float)) else False
-    correct_count = score
-    wrong_count = max(0, total - score)
-    warning_count = st.session_state.get("warnings_count", 0)
-
-    if time_str == "تم إنهاء الاختبار بسبب التحذيرات":
-        summary_text = (
-            f"تم إيقاف اختبار {st.session_state.get('test_subject', 'الامتحان')} بسبب الوصول إلى الحد الأقصى من التحذيرات. "
-            "يرجى الالتزام بالتعليمات في المحاولة القادمة."
-        )
-    elif passed:
-        summary_text = (
-            f"أداء ممتاز يا {st.session_state.get('user_name', 'الطالب')}. "
-            f"لقد حققت {score} من {total} بنسبة {percent}% "
-            f"وأجبت بشكل صحيح على {correct_count} سؤال خلال {time_str}."
-        )
-    else:
-        summary_text = (
-            f"تم الانتهاء من {st.session_state.get('test_subject', 'الامتحان')}. "
-            f"حصلت على {score} من {total} بنسبة {percent}% خلال {time_str}. "
-            "يمكنك مراجعة الأخطاء والشرح المبسط بالأسفل لتحسين مستواك في المحاولة القادمة."
-        )
-
-    status_html = (
-        '<div class="status-badge status-pass">✅ تم اجتياز الامتحان بنجاح</div>'
-        if passed and time_str != "تم إنهاء الاختبار بسبب التحذيرات"
-        else '<div class="status-badge status-fail">❌ لم يتم اجتياز الامتحان</div>'
-    )
-
-    st.markdown('<div class="result-shell">', unsafe_allow_html=True)
-    st.markdown(
-        f"""
-        <div class="result-hero">
-            <div class="result-hero-title">النتيجة النهائية</div>
-            <div class="result-hero-subtitle">
-                تهانينا <strong>{safe_text(st.session_state.get("user_name", "الطالب"))}</strong><br>
-                تم الانتهاء من امتحان <strong>{safe_text(st.session_state.get("test_subject", "الامتحان"))}</strong>
-                ويمكنك الآن مراجعة الملخص النهائي بالتفصيل.
-                <br>{status_html}
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        f"""
-        <div class="result-grid">
-            <div class="result-stat-card">
-                <div class="result-stat-label">الدرجة</div>
-                <div class="result-stat-value">{safe_text(f"{score}/{total}")}</div>
-                <div class="result-stat-note">إجمالي الأسئلة</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">النسبة المئوية</div>
-                <div class="result-stat-value">{safe_text(f"{percent}%")}</div>
-                <div class="result-stat-note">مستوى الأداء</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">إجابات صحيحة</div>
-                <div class="result-stat-value">{safe_text(correct_count)}</div>
-                <div class="result-stat-note">عدد الإجابات الصحيحة</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">إجابات خاطئة</div>
-                <div class="result-stat-value">{safe_text(wrong_count)}</div>
-                <div class="result-stat-note">عدد الإجابات الخاطئة</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">الوقت المستغرق</div>
-                <div class="result-stat-value">{safe_text(time_str)}</div>
-                <div class="result-stat-note">مدة أداء الاختبار</div>
-            </div>
-            <div class="result-stat-card">
-                <div class="result-stat-label">التحذيرات</div>
-                <div class="result-stat-value">{safe_text(warning_count)}</div>
-                <div class="result-stat-note">عدد التحذيرات المسجلة</div>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        f"""
-        <div class="summary-panel">
-            <div class="summary-title">الملخص النهائي</div>
-            <div class="summary-text">{safe_text(summary_text)}</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    if (
-        st.session_state["test_subject"] == "امتحان شامل"
-        and percent >= 80
-        and time_str != "تم إنهاء الاختبار بسبب التحذيرات"
-    ):
-        if generate_certificate is not None:
-            cert_path = generate_certificate(st.session_state["user_name"], percent, score, total)
-            st.success("🏅 مبروك! لقد اجتزت الامتحان المجمع ويمكنك تحميل شهادة الاجتياز.")
-            with open(cert_path, "rb") as f:
-                st.download_button(
-                    "⬇️ تحميل الشهادة PDF",
-                    data=f,
-                    file_name=Path(cert_path).name,
-                    mime="application/pdf",
-                    key=f"cert_{int(time.time())}",
-                )
-        else:
-            st.info("خدمة إنشاء الشهادة غير متاحة حالياً.")
-
-    if mistakes:
-        st.markdown('<div class="mistakes-box">', unsafe_allow_html=True)
-        st.markdown('<div class="mistakes-title">مراجعة الإجابات غير الصحيحة</div>', unsafe_allow_html=True)
-
-        for m in mistakes:
-            cache_key = f"{m['id']}::{m['user']}::{m['correct']}"
-            ai_exp = get_mistake_explanation(
-                m["subject"],
-                m["question"],
-                m["user"],
-                m["correct"],
-                cache_key,
-            )
-
-            st.markdown(
-                f"""
-                <div class="mistake-item">
-                    <div class="mistake-q">{safe_text(m['question'])}</div>
-                    <div class="mistake-a"><strong>إجابتك:</strong> {safe_text(m['user'])}</div>
-                    <div class="mistake-a"><strong>الإجابة الصحيحة:</strong> {safe_text(m['correct'])}</div>
-                    <div class="mistake-a"><strong>شرح مبسط:</strong> {safe_text(ai_exp)}</div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-
-        st.markdown("</div>", unsafe_allow_html=True)
-    else:
-        st.balloons()
-        st.success("ممتاز جدًا! إجاباتك كلها صحيحة بدون أي أخطاء.")
-
-    if st.session_state.get("ai_feedback") is None:
-        try:
-            ai_feedback = build_ai_exam_feedback(
-                subject=st.session_state.get("test_subject", "التحول الرقمي"),
-                user_name=st.session_state.get("user_name", "طالب"),
-                mistakes=mistakes,
-            )
-            st.session_state["ai_feedback"] = ai_feedback
-        except Exception as e:
-            print("AI feedback hook failed:", e)
-            st.session_state["ai_feedback"] = {
-                "summary_ar": "تعذر إنشاء التغذية الراجعة الذكية.",
-                "mistakes": []
-            }
-
-    c1, _ = st.columns([1.2, 4])
-    with c1:
-        if st.button("مسح النتيجة من الشاشة", key="clear_last_result"):
-            reset_last_result()
-            clear_exam_answers()
-            st.rerun()
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    if st.session_state.get("ai_feedback"):
-        ai_feedback = st.session_state["ai_feedback"]
-        st.markdown('<div class="ai-feedback-box">', unsafe_allow_html=True)
-        st.markdown('<div class="ai-feedback-title">🤖 شرح مبسط وتحليل ذكي للأداء</div>', unsafe_allow_html=True)
-        st.markdown(
-            f'<div class="ai-feedback-summary">{safe_text(ai_feedback.get("summary_ar", ""))}</div>',
-            unsafe_allow_html=True,
-        )
-
-        for idx, item in enumerate(ai_feedback.get("mistakes", []), start=1):
-            st.markdown(
-                f"""
-                <div class="ai-feedback-item">
-                    <div class="mistake-q">{idx}) {safe_text(item.get('question', ''))}</div>
-                    <div class="mistake-a"><strong>إجابتك:</strong> {safe_text(item.get('user_answer', ''))}</div>
-                    <div class="mistake-a"><strong>الإجابة الصحيحة:</strong> {safe_text(item.get('correct_answer', ''))}</div>
-                    <div class="mistake-a"><strong>الشرح:</strong> {safe_text(item.get('brief_explanation_ar', ''))}</div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-
-        st.markdown("</div>", unsafe_allow_html=True)
 
 
 def count_answered_questions(df_questions):
@@ -1415,14 +1275,14 @@ with top_left:
     st.markdown(
         f"""
         <div class="main-hero">
-            <div class="hero-title">🛡️ منصة امتحانات التحول الرقمي - جامعة جنوب الوادي (المجموعة 205)</div>
+            <div class="hero-title">{role_emoji} منصة امتحانات التحول الرقمي</div>
             <div class="hero-subtitle">
                 مرحباً <b>{safe_text(st.session_state["user_name"])}</b>
                 — الحالة: <b>{role_text}</b>
                 — رقم التليفون: <b>{safe_text(st.session_state["user_phone"])}</b>
             </div>
             <div class="hero-badge-row">
-                <div class="hero-badge">جامعة جنوب الوادي</div>
+                <div class="hero-badge">واجهة احترافية</div>
                 <div class="hero-badge">نتائج محفوظة</div>
                 <div class="hero-badge">تقييم لحظي</div>
                 <div class="hero-badge">مراجعة الأخطاء</div>
@@ -1684,71 +1544,34 @@ if st.session_state["is_admin"]:
 
         with admin_tabs[2]:
             st.markdown('<div class="section-card">', unsafe_allow_html=True)
-            st.markdown("### 📥 رفع كتب ومذكرات PDF")
+            st.markdown("### 📥 رفع كتاب أو مذكرة PDF")
             st.markdown(
-                '<div class="small-muted">يمكنك رفع عدة ملفات PDF مرة واحدة، ثم تحديد اسم كل كتاب والمادة التابعة له قبل الحفظ النهائي.</div>',
+                '<div class="small-muted">سيظهر الكتاب فوراً داخل المكتبة حسب المادة المختارة.</div>',
                 unsafe_allow_html=True,
             )
 
-            uploaded_books = st.file_uploader(
-                "ارفع ملف PDF واحد أو عدة ملفات",
-                type=["pdf"],
-                accept_multiple_files=True,
-                key="multi_books_uploader",
-            )
+            with st.form("upload_book_form"):
+                col1, col2 = st.columns(2)
+                with col1:
+                    up_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS, key="book_subject")
+                with col2:
+                    up_name = st.text_input("اسم الكتاب الظاهر للطالب")
 
-            if uploaded_books:
-                st.markdown("#### الملفات الجاهزة للحفظ")
-                for idx, up_file in enumerate(uploaded_books):
-                    st.markdown('<div class="library-book">', unsafe_allow_html=True)
-                    col1, col2 = st.columns([1.2, 1])
-                    default_name = Path(up_file.name).stem
-                    with col1:
-                        st.text_input(
-                            f"اسم الكتاب الظاهر للطالب #{idx + 1}",
-                            value=default_name,
-                            key=f"book_name_{idx}",
-                        )
-                    with col2:
-                        st.selectbox(
-                            f"المادة #{idx + 1}",
-                            DISPLAY_SUBJECTS,
-                            key=f"book_subject_{idx}",
-                        )
-                    st.markdown(
-                        f"<div class='small-muted'>الملف المرفوع: {safe_text(up_file.name)}</div>",
-                        unsafe_allow_html=True,
-                    )
-                    st.markdown("</div>", unsafe_allow_html=True)
+                up_file = st.file_uploader("ارفع ملف PDF", type=["pdf"])
+                up_submit = st.form_submit_button("رفع الكتاب")
 
-                if st.button("حفظ كل الكتب المرفوعة", key="save_multi_books"):
-                    saved_count = 0
-                    skipped_files = []
-
-                    for idx, up_file in enumerate(uploaded_books):
-                        custom_name = str(st.session_state.get(f"book_name_{idx}", "")).strip()
-                        subject_label = st.session_state.get(f"book_subject_{idx}")
-
-                        if not custom_name or not subject_label:
-                            skipped_files.append(up_file.name)
-                            continue
-
-                        subject_code = SUBJECT_MAP[subject_label]
+                if up_submit:
+                    if not up_name.strip() or up_file is None:
+                        st.error("يرجى كتابة اسم الكتاب ورفع الملف.")
+                    else:
+                        up_subject_code = SUBJECT_MAP[up_subject_label]
                         safe_name = f"{uuid.uuid4().hex}.pdf"
                         file_path = Path("books") / safe_name
                         with open(file_path, "wb") as f:
                             f.write(up_file.getbuffer())
-                        save_book(subject_code, custom_name, safe_name)
-                        saved_count += 1
-
-                    if saved_count:
-                        st.success(f"تم حفظ {saved_count} كتاب/مذكرة بنجاح.")
-                    if skipped_files:
-                        st.warning("لم يتم حفظ بعض الملفات لوجود اسم أو مادة غير مكتملة: " + "، ".join(skipped_files))
-                    if saved_count:
+                        save_book(up_subject_code, up_name.strip(), safe_name)
+                        st.success("تم رفع الكتاب بنجاح.")
                         st.rerun()
-            else:
-                st.info("ارفع ملفات PDF ليظهر لك نموذج ربط كل ملف بالمادة المناسبة.")
 
             st.markdown("</div>", unsafe_allow_html=True)
 
@@ -1829,7 +1652,7 @@ with tabs[student_offset]:
     with c1:
         selected_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS)
     with c2:
-        selected_type = st.radio("نوع الأسئلة", ["اختياري", "صح وخطأ", "ميكس"], horizontal=True)
+        selected_type = st.selectbox("نوع الأسئلة", ["اختياري", "صح وخطأ", "ميكس"], key="subject_exam_type")
     with c3:
         num_questions = st.number_input("عدد الأسئلة", min_value=1, max_value=100, value=10)
 
@@ -1895,76 +1718,39 @@ with tabs[student_offset + 2]:
     st.markdown('<div class="section-card-soft">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">المكتبة الرقمية والتحميل</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="section-subtitle">تصفح الكتب والمذكرات حسب المادة أو من خلال قسم جميع الكتب، ثم حمّلها مباشرة بصيغة PDF.</div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        '<div class="small-muted">جميع الحقوق محفوظة لمؤلفي الكتب.</div>',
+        '<div class="section-subtitle">تصفح الكتب والمذكرات حسب المادة وتحميلها مباشرة بصيغة PDF.</div>',
         unsafe_allow_html=True,
     )
 
-    library_tabs = st.tabs(["📚 حسب المادة", "🗂️ جميع الكتب"])
+    lib_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS, key="library_subject")
+    lib_subject_code = SUBJECT_MAP[lib_subject_label]
+    books_df = get_books_by_subject(lib_subject_code)
 
-    with library_tabs[0]:
-        lib_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS, key="library_subject")
-        lib_subject_code = SUBJECT_MAP[lib_subject_label]
-        books_df = prepare_books_df(get_books_by_subject(lib_subject_code))
-
-        if not books_df.empty:
-            st.markdown(f"### 📚 الكتب المتاحة لمادة: {safe_text(lib_subject_label)}")
-            for idx, row in books_df.iterrows():
-                st.markdown('<div class="library-book">', unsafe_allow_html=True)
-                b1, b2 = st.columns([4.5, 1.5])
-                with b1:
-                    subject_label, created_label = get_book_meta(row)
-                    st.markdown(f"#### {safe_text(row['custom_name'])}")
-                    st.markdown(
-                        f"<div class='small-muted'>المادة: {safe_text(subject_label)} — تمت إضافته بتاريخ: {safe_text(created_label)}</div>",
-                        unsafe_allow_html=True,
-                    )
-                with b2:
-                    file_path = Path("books") / row["file_name"]
-                    if file_path.exists():
-                        with open(file_path, "rb") as pdf_file:
-                            st.download_button(
-                                label="⬇️ تحميل الملف",
-                                data=pdf_file,
-                                file_name=f"{row['custom_name']}.pdf",
-                                mime="application/pdf",
-                                key=f"dl_subject_{idx}_{row['id']}",
-                            )
-                st.markdown("</div>", unsafe_allow_html=True)
-        else:
-            st.info("لا توجد كتب أو مذكرات مرفوعة لهذه المادة حاليًا.")
-
-    with library_tabs[1]:
-        all_books_df = get_all_books()
-        if not all_books_df.empty:
-            st.markdown("### 🗂️ جميع الكتب المتاحة داخل المكتبة")
-            for idx, row in all_books_df.iterrows():
-                st.markdown('<div class="library-book">', unsafe_allow_html=True)
-                b1, b2 = st.columns([4.5, 1.5])
-                with b1:
-                    subject_label, created_label = get_book_meta(row)
-                    st.markdown(f"#### {safe_text(row['custom_name'])}")
-                    st.markdown(
-                        f"<div class='small-muted'>المادة: {safe_text(subject_label)} — تمت إضافته بتاريخ: {safe_text(created_label)}</div>",
-                        unsafe_allow_html=True,
-                    )
-                with b2:
-                    file_path = Path("books") / row["file_name"]
-                    if file_path.exists():
-                        with open(file_path, "rb") as pdf_file:
-                            st.download_button(
-                                label="⬇️ تحميل الملف",
-                                data=pdf_file,
-                                file_name=f"{row['custom_name']}.pdf",
-                                mime="application/pdf",
-                                key=f"dl_all_{idx}_{row['id']}",
-                            )
-                st.markdown("</div>", unsafe_allow_html=True)
-        else:
-            st.info("لا توجد كتب مرفوعة داخل المكتبة حتى الآن.")
+    if not books_df.empty:
+        st.markdown(f"### 📚 الكتب المتاحة لمادة: {safe_text(lib_subject_label)}")
+        for idx, row in books_df.iterrows():
+            st.markdown('<div class="library-book">', unsafe_allow_html=True)
+            b1, b2 = st.columns([4.5, 1.5])
+            with b1:
+                st.markdown(f"#### {safe_text(row['custom_name'])}")
+                st.markdown(
+                    f"<div class='small-muted'>تمت إضافته بتاريخ: {safe_text(row['created_at'])}</div>",
+                    unsafe_allow_html=True,
+                )
+            with b2:
+                file_path = Path("books") / row["file_name"]
+                if file_path.exists():
+                    with open(file_path, "rb") as pdf_file:
+                        st.download_button(
+                            label="⬇️ تحميل الملف",
+                            data=pdf_file,
+                            file_name=f"{row['custom_name']}.pdf",
+                            mime="application/pdf",
+                            key=f"dl_{idx}_{row['id']}",
+                        )
+            st.markdown("</div>", unsafe_allow_html=True)
+    else:
+        st.info("لا توجد كتب أو مذكرات مرفوعة لهذه المادة حاليًا.")
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -2074,15 +1860,28 @@ if st.session_state.get("test_active") and st.session_state.get("test_data") is 
                 unsafe_allow_html=True,
             )
 
+            st.markdown('<div class="answer-label">اختر الإجابة</div>', unsafe_allow_html=True)
             if row["q_type"] == "اختياري":
                 options = [
                     str(opt).strip()
                     for opt in [row["opt1"], row["opt2"], row["opt3"], row["opt4"]]
                     if str(opt).strip()
                 ]
-                st.radio("اختر إجابة", options, key=f"answer_{qid}", index=None)
+                st.radio(
+                    "اختر إجابة",
+                    options,
+                    key=f"answer_{qid}",
+                    index=None,
+                    label_visibility="collapsed",
+                )
             else:
-                st.radio("اختر إجابة", ["صح", "خطأ"], key=f"answer_{qid}", index=None)
+                st.radio(
+                    "اختر إجابة",
+                    ["صح", "خطأ"],
+                    key=f"answer_{qid}",
+                    index=None,
+                    label_visibility="collapsed",
+                )
 
             with st.expander("🚩 الإبلاغ عن خطأ في السؤال"):
                 note = st.text_area("اكتب ملاحظتك", key=f"flag_note_{qid}")
@@ -2102,17 +1901,204 @@ if st.session_state.get("test_active") and st.session_state.get("test_data") is 
         if st.button("✅ تسليم وإنهاء الاختبار", key="submit_exam_btn"):
             submit_exam(df_questions)
 
-        if st.session_state.get("submitted") and st.session_state.get("last_score") is not None:
-            st.markdown("---")
-            render_result_section()
-
 
 # =========================
 # Last Result View
 # =========================
-if (
-    st.session_state.get("submitted")
-    and st.session_state.get("last_score") is not None
-    and not st.session_state.get("test_active")
-):
-    render_result_section()
+if st.session_state.get("submitted") and st.session_state.get("last_score") is not None:
+    score = st.session_state["last_score"]
+    total = st.session_state["last_total"]
+    percent = st.session_state["last_percent"]
+    time_str = st.session_state["last_time"]
+    mistakes = st.session_state.get("last_mistakes", [])
+    passed = float(percent) >= 50 if isinstance(percent, (int, float)) else False
+    correct_count = score
+    wrong_count = max(0, total - score)
+    warning_count = st.session_state.get("warnings_count", 0)
+
+    if time_str == "تم إنهاء الاختبار بسبب التحذيرات":
+        summary_text = (
+            f"تم إيقاف اختبار {st.session_state.get('test_subject', 'الامتحان')} بسبب الوصول إلى الحد الأقصى من التحذيرات. "
+            "يرجى الالتزام بالتعليمات في المحاولة القادمة."
+        )
+    elif passed:
+        summary_text = (
+            f"أداء ممتاز يا {st.session_state.get('user_name', 'الطالب')}. "
+            f"لقد حققت {score} من {total} بنسبة {percent}% "
+            f"وأجبت بشكل صحيح على {correct_count} سؤال خلال {time_str}."
+        )
+    else:
+        summary_text = (
+            f"تم الانتهاء من {st.session_state.get('test_subject', 'الامتحان')}. "
+            f"حصلت على {score} من {total} بنسبة {percent}% خلال {time_str}. "
+            "يمكنك مراجعة الأخطاء والشرح المبسط بالأسفل لتحسين مستواك في المحاولة القادمة."
+        )
+
+    status_html = (
+        '<div class="status-badge status-pass">✅ تم اجتياز الامتحان بنجاح</div>'
+        if passed and time_str != "تم إنهاء الاختبار بسبب التحذيرات"
+        else '<div class="status-badge status-fail">❌ لم يتم اجتياز الامتحان</div>'
+    )
+
+    st.markdown('<div class="result-shell">', unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <div class="result-hero">
+            <div class="result-hero-title">النتيجة النهائية</div>
+            <div class="result-hero-subtitle">
+                تهانينا <strong>{safe_text(st.session_state.get("user_name", "الطالب"))}</strong><br>
+                تم الانتهاء من امتحان <strong>{safe_text(st.session_state.get("test_subject", "الامتحان"))}</strong>
+                ويمكنك الآن مراجعة الملخص النهائي بالتفصيل.
+                <br>{status_html}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        f"""
+        <div class="result-grid">
+            <div class="result-stat-card">
+                <div class="result-stat-label">الدرجة</div>
+                <div class="result-stat-value">{safe_text(f"{score}/{total}")}</div>
+                <div class="result-stat-note">إجمالي الأسئلة</div>
+            </div>
+            <div class="result-stat-card">
+                <div class="result-stat-label">النسبة المئوية</div>
+                <div class="result-stat-value">{safe_text(f"{percent}%")}</div>
+                <div class="result-stat-note">مستوى الأداء</div>
+            </div>
+            <div class="result-stat-card">
+                <div class="result-stat-label">إجابات صحيحة</div>
+                <div class="result-stat-value">{safe_text(correct_count)}</div>
+                <div class="result-stat-note">عدد الإجابات الصحيحة</div>
+            </div>
+            <div class="result-stat-card">
+                <div class="result-stat-label">إجابات خاطئة</div>
+                <div class="result-stat-value">{safe_text(wrong_count)}</div>
+                <div class="result-stat-note">عدد الإجابات الخاطئة</div>
+            </div>
+            <div class="result-stat-card">
+                <div class="result-stat-label">الوقت المستغرق</div>
+                <div class="result-stat-value">{safe_text(time_str)}</div>
+                <div class="result-stat-note">مدة أداء الاختبار</div>
+            </div>
+            <div class="result-stat-card">
+                <div class="result-stat-label">التحذيرات</div>
+                <div class="result-stat-value">{safe_text(warning_count)}</div>
+                <div class="result-stat-note">عدد التحذيرات المسجلة</div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        f"""
+        <div class="summary-panel">
+            <div class="summary-title">الملخص النهائي</div>
+            <div class="summary-text">{safe_text(summary_text)}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    if (
+        st.session_state["test_subject"] == "امتحان شامل"
+        and percent >= 80
+        and time_str != "تم إنهاء الاختبار بسبب التحذيرات"
+    ):
+        if generate_certificate is not None:
+            cert_path = generate_certificate(st.session_state["user_name"], percent, score, total)
+            st.success("🏅 مبروك! لقد اجتزت الامتحان المجمع ويمكنك تحميل شهادة الاجتياز.")
+            with open(cert_path, "rb") as f:
+                st.download_button(
+                    "⬇️ تحميل الشهادة PDF",
+                    data=f,
+                    file_name=Path(cert_path).name,
+                    mime="application/pdf",
+                    key=f"cert_{int(time.time())}",
+                )
+        else:
+            st.info("خدمة إنشاء الشهادة غير متاحة حالياً.")
+
+    if mistakes:
+        st.markdown('<div class="mistakes-box">', unsafe_allow_html=True)
+        st.markdown('<div class="mistakes-title">مراجعة الإجابات غير الصحيحة</div>', unsafe_allow_html=True)
+
+        for m in mistakes:
+            cache_key = f"{m['id']}::{m['user']}::{m['correct']}"
+            ai_exp = get_mistake_explanation(
+                m["subject"],
+                m["question"],
+                m["user"],
+                m["correct"],
+                cache_key,
+            )
+
+            st.markdown(
+                f"""
+                <div class="mistake-item">
+                    <div class="mistake-q">{safe_text(m['question'])}</div>
+                    <div class="mistake-a"><strong>إجابتك:</strong> {safe_text(m['user'])}</div>
+                    <div class="mistake-a"><strong>الإجابة الصحيحة:</strong> {safe_text(m['correct'])}</div>
+                    <div class="mistake-a"><strong>شرح مبسط:</strong> {safe_text(ai_exp)}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+        st.markdown("</div>", unsafe_allow_html=True)
+    else:
+        st.balloons()
+        st.success("ممتاز جدًا! إجاباتك كلها صحيحة بدون أي أخطاء.")
+
+    if st.session_state.get("ai_feedback") is None:
+        try:
+            ai_feedback = build_ai_exam_feedback(
+                subject=st.session_state.get("test_subject", "التحول الرقمي"),
+                user_name=st.session_state.get("user_name", "طالب"),
+                mistakes=mistakes,
+            )
+            st.session_state["ai_feedback"] = ai_feedback
+        except Exception as e:
+            print("AI feedback hook failed:", e)
+            st.session_state["ai_feedback"] = {
+                "summary_ar": "تعذر إنشاء التغذية الراجعة الذكية.",
+                "mistakes": []
+            }
+
+    c1, _ = st.columns([1.2, 4])
+    with c1:
+        if st.button("مسح النتيجة من الشاشة", key="clear_last_result"):
+            reset_last_result()
+            clear_exam_answers()
+            st.rerun()
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+if st.session_state.get("ai_feedback"):
+    ai_feedback = st.session_state["ai_feedback"]
+    st.markdown('<div class="ai-feedback-box">', unsafe_allow_html=True)
+    st.markdown('<div class="ai-feedback-title">🤖 شرح مبسط وتحليل ذكي للأداء</div>', unsafe_allow_html=True)
+    st.markdown(
+        f'<div class="ai-feedback-summary">{safe_text(ai_feedback.get("summary_ar", ""))}</div>',
+        unsafe_allow_html=True,
+    )
+
+    for idx, item in enumerate(ai_feedback.get("mistakes", []), start=1):
+        st.markdown(
+            f"""
+            <div class="ai-feedback-item">
+                <div class="mistake-q">{idx}) {safe_text(item.get('question', ''))}</div>
+                <div class="mistake-a"><strong>إجابتك:</strong> {safe_text(item.get('user_answer', ''))}</div>
+                <div class="mistake-a"><strong>الإجابة الصحيحة:</strong> {safe_text(item.get('correct_answer', ''))}</div>
+                <div class="mistake-a"><strong>الشرح:</strong> {safe_text(item.get('brief_explanation_ar', ''))}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    st.markdown("</div>", unsafe_allow_html=True)
