@@ -800,6 +800,55 @@ def localize_subject_column(df, col_name="subject"):
     return new_df
 
 
+def ensure_books_schema():
+    try:
+        schema_df = fetch_df("PRAGMA table_info(books)")
+        if schema_df is None or schema_df.empty or "name" not in schema_df.columns:
+            return
+
+        column_names = set(schema_df["name"].astype(str).tolist())
+
+        if "subject" not in column_names:
+            execute("ALTER TABLE books ADD COLUMN subject TEXT")
+        if "created_at" not in column_names:
+            execute("ALTER TABLE books ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    except Exception:
+        pass
+
+
+def prepare_books_df(df):
+    if df is None:
+        return pd.DataFrame()
+
+    books_df = df.copy()
+    if books_df.empty:
+        return books_df
+
+    if "subject" not in books_df.columns:
+        books_df["subject"] = ""
+    if "created_at" not in books_df.columns:
+        books_df["created_at"] = ""
+    if "custom_name" not in books_df.columns:
+        books_df["custom_name"] = books_df.get("file_name", "بدون اسم")
+    if "file_name" not in books_df.columns:
+        books_df["file_name"] = ""
+
+    books_df["subject"] = books_df["subject"].apply(normalize_subject_label)
+    books_df["created_at"] = books_df["created_at"].fillna("").astype(str)
+    books_df["custom_name"] = books_df["custom_name"].fillna("بدون اسم").astype(str)
+    books_df["file_name"] = books_df["file_name"].fillna("").astype(str)
+    return books_df
+
+
+def get_book_meta(row):
+    subject_value = row["subject"] if "subject" in row.index and pd.notna(row["subject"]) else ""
+    created_at_value = row["created_at"] if "created_at" in row.index and pd.notna(row["created_at"]) else ""
+
+    subject_label = normalize_subject_label(subject_value) if str(subject_value).strip() else "غير محدد"
+    created_label = str(created_at_value).strip() if str(created_at_value).strip() else "غير متاح"
+    return subject_label, created_label
+
+
 def clear_exam_answers():
     answer_keys = [k for k in st.session_state.keys() if str(k).startswith("answer_")]
     flag_keys = [k for k in st.session_state.keys() if str(k).startswith("flag_note_")]
@@ -849,8 +898,14 @@ def get_dashboard_summary():
 
 
 def get_all_books():
-    books_df = fetch_df("SELECT * FROM books ORDER BY created_at DESC")
-    return localize_subject_column(books_df, "subject")
+    try:
+        books_df = fetch_df("SELECT * FROM books ORDER BY created_at DESC")
+    except Exception:
+        books_df = fetch_df("SELECT * FROM books ORDER BY id DESC")
+    return prepare_books_df(books_df)
+
+
+ensure_books_schema()
 
 
 def render_result_section():
@@ -1853,7 +1908,7 @@ with tabs[student_offset + 2]:
     with library_tabs[0]:
         lib_subject_label = st.selectbox("اختر المادة", DISPLAY_SUBJECTS, key="library_subject")
         lib_subject_code = SUBJECT_MAP[lib_subject_label]
-        books_df = localize_subject_column(get_books_by_subject(lib_subject_code), "subject")
+        books_df = prepare_books_df(get_books_by_subject(lib_subject_code))
 
         if not books_df.empty:
             st.markdown(f"### 📚 الكتب المتاحة لمادة: {safe_text(lib_subject_label)}")
@@ -1861,9 +1916,10 @@ with tabs[student_offset + 2]:
                 st.markdown('<div class="library-book">', unsafe_allow_html=True)
                 b1, b2 = st.columns([4.5, 1.5])
                 with b1:
+                    subject_label, created_label = get_book_meta(row)
                     st.markdown(f"#### {safe_text(row['custom_name'])}")
                     st.markdown(
-                        f"<div class='small-muted'>المادة: {safe_text(normalize_subject_label(row['subject']))} — تمت إضافته بتاريخ: {safe_text(row['created_at'])}</div>",
+                        f"<div class='small-muted'>المادة: {safe_text(subject_label)} — تمت إضافته بتاريخ: {safe_text(created_label)}</div>",
                         unsafe_allow_html=True,
                     )
                 with b2:
@@ -1889,9 +1945,10 @@ with tabs[student_offset + 2]:
                 st.markdown('<div class="library-book">', unsafe_allow_html=True)
                 b1, b2 = st.columns([4.5, 1.5])
                 with b1:
+                    subject_label, created_label = get_book_meta(row)
                     st.markdown(f"#### {safe_text(row['custom_name'])}")
                     st.markdown(
-                        f"<div class='small-muted'>المادة: {safe_text(normalize_subject_label(row['subject']))} — تمت إضافته بتاريخ: {safe_text(row['created_at'])}</div>",
+                        f"<div class='small-muted'>المادة: {safe_text(subject_label)} — تمت إضافته بتاريخ: {safe_text(created_label)}</div>",
                         unsafe_allow_html=True,
                     )
                 with b2:
